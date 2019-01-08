@@ -1,0 +1,49 @@
+[{
+  "id": "2001",
+  "name": "UEFA Champions League",
+  "logo": "../../static/logos_leagues/2001.png",
+  "code": "CL",
+  "country" : "Europe"
+},{
+  "id": "2084",
+  "name": "Premier League",
+  "logo": "../../static/logos_leagues/2084.png",
+  "code": "",
+  "country" : "England"
+},{
+  "id": "2012",
+  "name": "BUNDESLIGA",
+  "logo": "../../static/logos_leagues/2012.png",
+  "code": "ABL",
+  "country" : "Germany"
+},{
+  "id": "2016",
+  "name": "CHAMPIONSHIP",
+  "logo": "../../static/logos_leagues/2016.png",
+  "code": "ELC",
+  "country" : "England"
+},{
+  "id": "2019",
+  "name": "SERIE A",
+  "logo": "../../static/logos_leagues/2019.png",
+  "code": "SA",
+  "country" : "Italy"
+},{
+  "id": "2017",
+  "name": "Primeira Liga",
+  "logo": "../../static/logos_leagues/2017.png",
+  "code": "PPL",
+  "country" : "Brazil"
+},{
+  "id": "2003",
+  "name": "EREDIVISIE",
+  "logo": "../../static/logos_leagues/2003.png",
+  "code": "DED",
+  "country" : "Netherlands"
+},{
+  "id": "2015",
+  "name": "LIGUE 1",
+  "logo": "../../static/logos_leagues/2015.png",
+  "code": "FL1",
+  "country" : "France"
+}]

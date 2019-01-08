@@ -1,0 +1,145 @@
+[{
+  "club": "Aston Villa",
+  "web_site": "https://www.avfc.co.uk/",
+  "logo": "../static/logos_championship/1200px-Aston_Villa_FC_crest_(2016).svg.png",
+  "stadium_name": "Villa Park",
+  "stadium_address": "Trinity Rd, Birmingham B6 6HE, UK"
+}, {
+   "club":  "Birmingham City",
+   "web_site": "https: //www.bcfc.com/ ",
+   "logo": "../static/logos_championship/Birmingham_city_fc.svg.png",
+    "stadium_name": "St Andrew 's ",
+   "stadium_address":  "Cattell Rd, Birmingham B9 4RL, UK "
+}, {
+   "club":  "Bolton Wanderers",
+   "web_site":  "https://www.bwfc.co.uk/ ",
+   "logo":  "../static/logos_championship/Bolton_Wanderers_FC_logo.svg.png",
+   "stadium_name":  "Macron Stadium ",
+   "stadium_address":  "Burnden Way, Horwich, Bolton BL6 6JW, UK "
+}, {
+   "club":  "Blackburn Rovers",
+   "web_site":  "https: //www.rovers.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Blackburn_Rovers.svg.png",
+   "stadium_name":  "Ewood Park ",
+   "stadium_address":  "Nuttall St, Blackburn BB2 4 JF, UK "
+}, {
+   "club":  "Brentford",
+   "web_site":  "https://www.brentfordfc.com/ ",
+   "logo":  "../static/logos_championship/1200px-Brentford_FC_crest.svg.png",
+   "stadium_name":  "Griffin Park ",
+   "stadium_address":  "Braemar Rd, Brentford TW8 0 NT, UK "
+}, {
+   "club":  "Bristol City",
+   "web_site":  "https://www.bcfc.co.uk/ ",
+   "logo":  "../static/logos_championship/Bristol_City_FC_logo.png",
+   "stadium_name":  "Ashton Gate ",
+   "stadium_address":  "Ashton Rd, Bristol BS3 2 EJ, UK "
+}, {
+   "club":  "Derby County",
+   "web_site":  "https: //www.dcfc.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Derby_County_crest.svg.png",
+   "stadium_name":  "Pride Park ",
+   "stadium_address":  "Pride Park, Derby DE24 8 XL, UK "
+}, {
+   "club":  "Hull City",
+   "web_site":  "https: //www.hullcitytigers.com/ ",
+   "logo":  "../static/logos_championship/Hull_City_Crest_2014.svg.png",
+   "stadium_name":  "KCOM Stadium ",
+   "stadium_address":  "Walton St, Hull HU3 6 HU, UK "
+}, {
+   "club":  "Ipswich Town",
+   "web_site":  "https: //www.itfc.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Ipswich_Town.svg.png",
+   "stadium_name":  "Portman Road ",
+   "stadium_address":  "Ipswich Town Football club, Portman Rd, Ipswich IP1 2 DA, UK "
+}, {
+   "club":  "Leeds United",
+   "web_site":  "https: //www.leedsunited.com/ ",
+   "logo":  "../static/logos_championship/Leeds_United_Logo.png",
+   "stadium_name":  "Elland Road ",
+   "stadium_address":  "Elland Rd, Leeds LS11 0 ES, UK "
+}, {
+   "club":  "Middlesbrough",
+   "web_site":  "https: //www.mfc.co.uk/ ",
+   "logo":  "../static/logos_championship/Middlesbrough_FC_crest.svg.png",
+   "stadium_name":  "Riverside Stadium ",
+   "stadium_address":  "Middlesbrough TS3 6 RS, UK "
+}, {
+   "club":  "Millwall",
+   "web_site":  "https: //www.millwallfc.co.uk/ ",
+   "logo":  "../static/logos_championship/Millwall_FC_logo.png",
+   "stadium_name":  "The Den ",
+   "stadium_address":  "Zampa Rd, London SE16 3 LN, UK "
+}, {
+   "club":  "Norwich City",
+   "web_site":  "https: //www.canaries.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Norwich_City.svg.png",
+   "stadium_name":  "Carrow Road ",
+   "stadium_address":  "Carrow Rd, Norwich NR1 1 JE, UK "
+}, {
+   "club":  "Nottingham Forest",
+   "web_site":  "https: //www.nottinghamforest.co.uk/ ",
+   "logo":  "../static/logos_championship/Logo_Nottingham_Forest.svg.png",
+   "stadium_name":  "City Ground ",
+   "stadium_address":  "25 Trentside N, West Bridgford, Nottingham NG2 5 FJ, UK "
+}, {
+   "club":  "Preston North End",
+   "web_site":  "https: //www.pnefc.net/ ",
+   "logo":  "../static/logos_championship/Preston North End.png",
+   "stadium_name":  "Deepdale ",
+   "stadium_address":  "Sir Tom Finney Way, Preston PR1 6 RU, UK "
+}, {
+   "club":  "Queens Park Rangers",
+   "web_site":  "https://www.qpr.co.uk/ ",
+   "logo":  "../static/logos_championship/Queens_Park_Rangers_crest.svg.png",
+   "stadium_name":  "Loftus Road ",
+   "stadium_address": "S Africa Rd, Shepherd  's Bush, London W12 7PJ, UK"
+}, {
+   "club":  "Reading",
+   "web_site":  "https: //www.readingfc.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Reading_FC.svg.png",
+   "stadium_name":  "Madejski Stadium ",
+   "stadium_address":  "Junction 11, M4, Reading RG2 0 FL, UK "
+}, {
+   "club":  "Rotherham United",
+   "web_site":  "https: //www.themillers.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Rotherham_United_FC.svg.png",
+   "stadium_name":  "New York Stadium ",
+   "stadium_address":  "New York Way, Rotherham S60 1 FJ, UK "
+}, {
+   "club":  "Sheffield United",
+   "web_site":  "https: //www.sufc.co.uk/ ",
+   "logo":  "../static/logos_championship/220px-Sheffield_United_FC_logo.svg.png",
+   "stadium_name":  "Bramall Lane ",
+   "stadium_address":  "105 Bramall Ln, Sheffield S2 4 SW, UK "
+}, {
+   "club":  "Sheffield Wednesday",
+   "web_site":  "https: //www.swfc.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-Sheffield_Wednesday_badge.svg.png",
+   "stadium_name":  "Hillsborough ",
+   "stadium_address":  "76 Penistone Rd N, Sheffield S6 1 SW, UK "
+}, {
+   "club":  "Stoke City",
+   "web_site":  "https: //www.stokecityfc.com/ ",
+   "logo":  "../static/logos_championship/220px-Stoke_City_FC.svg.png" ,
+   "stadium_name":  "Bet365 Stadium ",
+   "stadium_address":  "Stanley Matthews Way, Stoke - on - Trent ST4 4 EG, UK "
+}, {
+   "club":  "Swansea City",
+   "web_site":  "https: //www.swanseacity.com/ ",
+   "logo":  "../static/logos_championship/Swansea_City_AFC_logo.svg.png",
+   "stadium_name":  "Liberty Stadium ",
+   "stadium_address":  "Plasmarl, Swansea SA1 2 FA, UK "
+}, {
+   "club":  "West Bromwich Albion",
+   "web_site":  "https: //www.wba.co.uk/ ",
+   "logo":  "../static/logos_championship/1200px-West_Bromwich_Albion.svg.png",
+   "stadium_name":  "The Hawthorns ",
+   "stadium_address":  "9 Birmingham Rd, West Bromwich B71 4 LF, UK "
+}, {
+   "club":  "Wigan Athletic",
+   "web_site":  "https: //www.wiganathletic.com/ ",
+   "logo":  "../static/logos_championship/220px-Wigan_Athletic.svg.png" ,
+   "stadium_name":  "DW Stadium ",
+   "stadium_address":  "15 Loire Dr, Wigan WN5 0 UH, UK "
+}]
