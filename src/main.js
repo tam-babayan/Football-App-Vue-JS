@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import carousel from './components/Carousel_images'
-import calendar from './components/Calendar'
 import 'vuetify/dist/vuetify.min.css'
 import Home from './components/Home'
 import NavBar from './components/Nav_bar.vue'
@@ -20,7 +19,6 @@ Vue.component('home', Home)
 Vue.component('navBar', NavBar)
 Vue.component('gameList', GameList)
 Vue.component('carousel', carousel)
-Vue.component('calendar', calendar)
 Vue.component('leaguesIcons', LeaguesIcons)
 Vue.component('staticJson', staticJson)
 Vue.component('gameDetails', GameDetails)

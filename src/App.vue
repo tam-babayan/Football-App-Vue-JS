@@ -1,6 +1,7 @@
 <template>
   <div id='app'>
-    <!-- <navBar></navBar> -->
+    <navBar></navBar>
+    <carousel></carousel>
     <router-view/>
   </div>
 </template>

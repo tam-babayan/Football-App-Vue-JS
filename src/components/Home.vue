@@ -1,6 +1,5 @@
 <template>
   <div>
-    <carousel></carousel>
     <leaguesIcons></leaguesIcons>
   </div>
 </template>
