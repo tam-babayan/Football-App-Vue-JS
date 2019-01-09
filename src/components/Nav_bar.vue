@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

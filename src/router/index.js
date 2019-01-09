@@ -6,9 +6,11 @@ import Home from '../components/Home.vue'
 import GameList from '../components/Game_list.vue'
 import MatchDetails from '../components/Match_details.vue'
 import TeamDetails from '../components/Team_Details.vue'
+import moment from 'moment'
 
 Vue.use(Vuetify)
 Vue.use(Router)
+Vue.prototype.moment = moment
 
 export default new Router({
   linkExactActiveClass: 'active',

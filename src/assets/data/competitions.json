@@ -5,16 +5,16 @@
   "code": "CL",
   "country" : "Europe"
 },{
-  "id": "2084",
+  "id": "2021",
   "name": "Premier League",
-  "logo": "../../static/logos_leagues/2084.png",
-  "code": "",
+  "logo": "../../static/logos_leagues/2021.png",
+  "code": "PL",
   "country" : "England"
 },{
-  "id": "2012",
+  "id": "2002",
   "name": "BUNDESLIGA",
-  "logo": "../../static/logos_leagues/2012.png",
-  "code": "ABL",
+  "logo": "../../static/logos_leagues/2002.png",
+  "code": "BL1",
   "country" : "Germany"
 },{
   "id": "2016",
@@ -33,7 +33,7 @@
   "name": "Primeira Liga",
   "logo": "../../static/logos_leagues/2017.png",
   "code": "PPL",
-  "country" : "Brazil"
+  "country" : "Portugal"
 },{
   "id": "2003",
   "name": "EREDIVISIE",

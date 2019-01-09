@@ -1,7 +1,6 @@
 <template>
   <div id='app'>
     <navBar></navBar>
-    <carousel></carousel>
     <router-view/>
   </div>
 </template>

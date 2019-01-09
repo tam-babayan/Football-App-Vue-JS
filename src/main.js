@@ -13,7 +13,7 @@ import LeaguesIcons from './components/Leagues_icons.vue'
 import staticJson from './assets/data/clubs.json'
 import MatchDetails from './components/Match_details.vue'
 import TeamDetails from './components/Team_Details.vue'
-import * as VueGoogleMaps from "vue2-google-maps"
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(Vuetify)
 Vue.component('home', Home)
@@ -27,8 +27,8 @@ Vue.component('teamDetails', TeamDetails)
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "REPLACE-THIS-WITH-YOUR-KEY-FROM-ABOVE",
-    libraries: "places" // necessary for places input
+    key: 'AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA',
+    libraries: 'places'
   }
 })
 

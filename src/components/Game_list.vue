@@ -10,7 +10,7 @@
         <template slot='items' slot-scope='props'>
           <td class='text-xs-left'><router-link class="nav-item" :to="{ path: '/team-details/' + props.item.homeTeam.id }">{{ props.item.homeTeam.name }}</router-link></td>
           <td class='text-xs-left'><router-link class="nav-item" :to="{ path: '/team-details/' + props.item.awayTeam.id}">{{ props.item.awayTeam.name }}</router-link></td>
-          <td class='text-xs-left'>{{ (new Date(props.item.utcDate)).toLocaleDateString("en-US") }}</td>
+          <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, H:mm') }}</td>
           <td class='text-xs-left'>
           <router-link class="nav-item" :to="{ path: '/match-details/' + props.item.id}">details</router-link>
           </td>
@@ -28,6 +28,7 @@
 <script>
 import competitions from '../assets/data/competitions.json'
 import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -35,7 +36,8 @@ export default {
       search: null,
       loading: true,
       pagination: {
-        rowsPerPage: 100
+        rowsPerPage: 100,
+        sortBy: 'utcDate'
       },
       headers: [
         { text: 'HomeTeam', value: 'homeTeam.name' },
