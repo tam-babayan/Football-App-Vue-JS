@@ -4,7 +4,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Home from '../components/Home.vue'
 import GameList from '../components/Game_list.vue'
-import GameDetails from '../components/Game_Details.vue'
+import MatchDetails from '../components/Match_details.vue'
 import TeamDetails from '../components/Team_Details.vue'
 
 Vue.use(Vuetify)
@@ -25,9 +25,9 @@ export default new Router({
     props: true
   },
   {
-    path: '/game-details/:id',
-    name: 'GameDetails',
-    component: GameDetails,
+    path: '/match-details/:id',
+    name: 'MatchDetails',
+    component: MatchDetails,
     props: true
   },
   {

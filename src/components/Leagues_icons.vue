@@ -27,17 +27,6 @@
       </section>
     </div>
   </main>
-  <!-- <v-layout>
-    <v-flex xs12 sm8 offset-sm2>
-          <v-layout row wrap>
-            <v-flex v-for="competition in competitions" :key="competition.id" d-flex>
-                <router-link class="nav-item" :to="{ path: '/game-list/' + competition.id }">
-                  <v-img :src="competition.logo" width="200" height="200" aspect-ratio="1"></v-img>
-                </router-link>
-            </v-flex>
-          </v-layout>
-    </v-flex>
-  </v-layout> -->
 </template>
 
 <script>

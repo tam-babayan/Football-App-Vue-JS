@@ -12,7 +12,7 @@
           <td class='text-xs-left'><router-link class="nav-item" :to="{ path: '/team-details/' + props.item.awayTeam.id}">{{ props.item.awayTeam.name }}</router-link></td>
           <td class='text-xs-left'>{{ (new Date(props.item.utcDate)).toLocaleDateString("en-US") }}</td>
           <td class='text-xs-left'>
-          <router-link class="nav-item" :to="{ path: '/game-details/' + props.item.id}">details</router-link>
+          <router-link class="nav-item" :to="{ path: '/match-details/' + props.item.id}">details</router-link>
           </td>
         </template>
       <v-alert

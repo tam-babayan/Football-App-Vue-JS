@@ -11,8 +11,9 @@ import NavBar from './components/Nav_bar.vue'
 import GameList from './components/Game_list.vue'
 import LeaguesIcons from './components/Leagues_icons.vue'
 import staticJson from './assets/data/clubs.json'
-import GameDetails from './components/Game_Details.vue'
+import MatchDetails from './components/Match_details.vue'
 import TeamDetails from './components/Team_Details.vue'
+import * as VueGoogleMaps from "vue2-google-maps"
 
 Vue.use(Vuetify)
 Vue.component('home', Home)
@@ -21,8 +22,15 @@ Vue.component('gameList', GameList)
 Vue.component('carousel', carousel)
 Vue.component('leaguesIcons', LeaguesIcons)
 Vue.component('staticJson', staticJson)
-Vue.component('gameDetails', GameDetails)
+Vue.component('matchDetails', MatchDetails)
 Vue.component('teamDetails', TeamDetails)
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "REPLACE-THIS-WITH-YOUR-KEY-FROM-ABOVE",
+    libraries: "places" // necessary for places input
+  }
+})
 
 Vue.config.productionTip = false
 
