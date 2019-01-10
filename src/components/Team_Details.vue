@@ -58,11 +58,6 @@ export default {
         })
     }
   }
-  // computed: {
-  //   Backtomatchesbutton () {
-
-  //   }
-  // }
 }
 </script>
 
