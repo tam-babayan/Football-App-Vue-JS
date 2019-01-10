@@ -5,7 +5,7 @@ import 'vuetify/dist/vuetify.min.css'
 import Home from '../components/Home.vue'
 import GameList from '../components/Game_list.vue'
 import MatchDetails from '../components/Match_details.vue'
-import TeamDetails from '../components/Team_Details.vue'
+import TeamDetails from '../components/Team_details.vue'
 import moment from 'moment'
 
 Vue.use(Vuetify)

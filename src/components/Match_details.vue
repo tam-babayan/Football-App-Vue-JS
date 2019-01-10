@@ -3,9 +3,9 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-          <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
+          <!-- <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
             <v-btn flat small color="blue">Back to Matches </v-btn>
-          </router-link>
+          </router-link> -->
           <v-list>
             <v-list-tile class='text-mx-center'>
               <v-list-tile-content>
@@ -75,76 +75,75 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import clubs from '../assets/data/clubs.json'
-  import competitions from '../assets/data/competitions.json'
-  import GoogleMap from './GoogleMap'
-  export default {
-    data() {
-      return {
-        homeTeam: {},
-        awayTeam: {},
-        match: {},
-        competitions: competitions,
-        clubs: clubs
-      }
+import axios from 'axios'
+import clubs from '../assets/data/clubs.json'
+import competitions from '../assets/data/competitions.json'
+import GoogleMap from './GoogleMap'
+export default {
+  data () {
+    return {
+      homeTeam: {},
+      awayTeam: {},
+      match: {},
+      competitions: competitions,
+      clubs: clubs
+    }
+  },
+  components: {
+    GoogleMap
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      axios
+        .create({
+          headers: {
+            'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
+          }
+        })
+        .get(
+          'https://api.football-data.org/v2/matches/' +
+          this.$route.params.id +
+          '?status=SCHEDULED'
+        )
+        .then(response => {
+          this.match = response.data.match
+          console.log(this.match)
+          this.getLogos(this.match.homeTeam.id).then(response => {
+            this.homeTeam = response.data
+            console.log(this.homeTeam)
+          })
+          this.getLogos(this.match.awayTeam.id).then(response => {
+            this.awayTeam = response.data
+            console.log(this.awayTeam)
+          })
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
-    components: {
-      GoogleMap
-    },
-    mounted() {
-      this.getData()
-    },
-    methods: {
-      getData() {
-        axios
-          .create({
-            headers: {
-              'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
-            }
-          })
-          .get(
-            'https://api.football-data.org/v2/matches/' +
-            this.$route.params.id +
-            '?status=SCHEDULED'
-          )
-          .then(response => {
-            this.match = response.data.match
-            console.log(this.match)
-            this.getLogos(this.match.homeTeam.id).then(response => {
-              this.homeTeam = response.data
-              console.log(this.homeTeam)
-            })
-            this.getLogos(this.match.awayTeam.id).then(response => {
-              this.awayTeam = response.data
-              console.log(this.awayTeam)
-            })
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      },
-      getLogos(id) {
-        return axios
-          .create({
-            headers: {
-              'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
-            }
-          })
-          .get('http://api.football-data.org/v2/teams/' + id)
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
-    },
-    computed: {
-      getLeagueLogo() {
-        const tempArr = this.competitions.filter(one => one.id === this.match.competition.id)
-        return tempArr[0].logo
-      }
+    getLogos (id) {
+      return axios
+        .create({
+          headers: {
+            'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
+          }
+        })
+        .get('http://api.football-data.org/v2/teams/' + id)
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+  },
+  computed: {
+    getLeagueLogo () {
+      const tempArr = this.competitions.filter(one => one.id === this.match.competition.id)
+      return tempArr[0].logo
     }
   }
-
+}
 </script>
 
 <style scoped>

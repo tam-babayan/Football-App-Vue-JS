@@ -12,7 +12,7 @@ import GameList from './components/Game_list.vue'
 import LeaguesIcons from './components/Leagues_icons.vue'
 import staticJson from './assets/data/clubs.json'
 import MatchDetails from './components/Match_details.vue'
-import TeamDetails from './components/Team_Details.vue'
+import TeamDetails from './components/Team_details.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(Vuetify)

@@ -57,12 +57,12 @@ export default {
           console.log(error)
         })
     }
-  },
-  computed: {
-    Backtomatchesbutton () {
-      
-    }
   }
+  // computed: {
+  //   Backtomatchesbutton () {
+
+  //   }
+  // }
 }
 </script>
 
