@@ -36,7 +36,7 @@
             </v-list-tile>
             <v-divider inset></v-divider>
             <v-list-tile>
-              <div class="space-around">
+              <div>
                 <v-list-tile-action>
                   <v-icon color='indigo'>calendar_today</v-icon>
                 </v-list-tile-action>
@@ -44,7 +44,7 @@
                   {{ moment(match.utcDate).format('YYYY-MM-DD') }}
                 </v-list-tile-content>
               </div>
-              <div class="space-around">
+              <div>
                 <v-list-tile-action>
                   <v-icon color='indigo'>access_time</v-icon>
                 </v-list-tile-action>

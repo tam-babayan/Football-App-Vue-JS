@@ -12,14 +12,17 @@
       class="elevation-1">
         <template slot='items' slot-scope='props'>
           <td class='text-xs-left'>
-            <!-- <v-img :src="getTeamLogo"/> -->
             <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
-            {{ props.item.homeTeam.name }}</router-link></td>
+            <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)"/>
+            {{ props.item.homeTeam.name }}
+            </router-link>
+          </td>
           <td class='text-xs-left'>
-            <!-- <v-img :src="getTeamLogo"/> -->
-            <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
-            {{ props.item.awayTeam.name }}
-            </router-link></td>
+              <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
+              <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)"/>
+              {{ props.item.awayTeam.name }}
+              </router-link>
+          </td>
           <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
           <td class='text-xs-left'>
           <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
@@ -55,6 +58,7 @@ export default {
   },
   mounted () {
     this.getData()
+    this.getLogo()
   },
   methods: {
     getData () {
@@ -71,7 +75,6 @@ export default {
           this.matches = response.data.matches
           this.loading = false
           console.log(this.matches)
-          this.getLogo()
         })
         .catch(function (error) {
           console.log(error)
@@ -92,6 +95,10 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    getTeamLogo (id) {
+      const tempArr = this.logos.teams.filter(one => one.id === id)
+      return tempArr[0].crestUrl
     }
   },
   computed: {
@@ -102,10 +109,6 @@ export default {
     getLeagueLogo () {
       const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
       return tempArr[0].logo
-    },
-    getTeamLogo () {
-      const tempArr = this.logos.teams.filter(one => one.id === (this.matches.homeTeam.id || this.matches.awayTeam.id))
-      return tempArr.teams[0].crestUrl
     }
   }
 }
