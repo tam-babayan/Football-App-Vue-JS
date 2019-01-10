@@ -47,7 +47,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('http://api.football-data.org/v2/teams/' + this.$route.params.id)
+        .get('https://api.football-data.org/v2/teams/' + this.$route.params.id)
         .then(response => {
           this.team = response.data
           this.loading = false

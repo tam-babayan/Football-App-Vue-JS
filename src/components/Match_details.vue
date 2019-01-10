@@ -3,9 +3,9 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-          <!-- <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
+          <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
             <v-btn flat small color="blue">Back to Matches </v-btn>
-          </router-link> -->
+          </router-link>
           <v-list>
             <v-list-tile class='text-mx-center'>
               <v-list-tile-content>
@@ -76,7 +76,6 @@
 
 <script>
 import axios from 'axios'
-import clubs from '../assets/data/clubs.json'
 import competitions from '../assets/data/competitions.json'
 import GoogleMap from './GoogleMap'
 export default {
@@ -85,8 +84,7 @@ export default {
       homeTeam: {},
       awayTeam: {},
       match: {},
-      competitions: competitions,
-      clubs: clubs
+      competitions: competitions
     }
   },
   components: {
@@ -131,7 +129,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('http://api.football-data.org/v2/teams/' + id)
+        .get('https://api.football-data.org/v2/teams/' + id)
         .catch(function (error) {
           console.log(error)
         })

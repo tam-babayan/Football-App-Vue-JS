@@ -20,7 +20,7 @@
             <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
             {{ props.item.awayTeam.name }}
             </router-link></td>
-          <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, H:mm') }}</td>
+          <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
           <td class='text-xs-left'>
           <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
           </td>
@@ -84,7 +84,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('http://api.football-data.org/v2/competitions/' + this.$route.params.id + '/teams')
+        .get('https://api.football-data.org/v2/competitions/' + this.$route.params.id + '/teams')
         .then(response => {
           this.logos = response.data
           console.log(this.logos)
