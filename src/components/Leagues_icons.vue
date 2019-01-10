@@ -6,9 +6,9 @@
         <div class="row wow fadeIn">
           <div class="col-lg-3 col-md-6 mb-4" v-for="competition in competitions" :key="competition.id">
             <div class="card">
-              <div class="view overlay">
+              <div class="view overlay zoom">
                 <router-link :to="{ path: '/game-list/' + competition.id }">
-                  <img :src="competition.logo" class="card-img-top" >
+                  <img :src="competition.logo" class="card-img-top " alt="league">
                 </router-link>
               </div>
               <div class="card-body text-center">

@@ -11,13 +11,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <!-- Left -->
-        <ul class="navbar-nav mr-auto">
           <ul class="navbar-nav mr-auto">
             <router-link class="nav-item" :to="{ path: '/' }" tag="li">
               <a class="nav-link">Home</a>
             </router-link>
           </ul>
-        </ul>
       </div>
     </div>
   </nav>
@@ -27,5 +25,15 @@
 export default {}
 </script>
 
-<style>
+<style scope>
+.container {
+  font-size: 20px;
+}
+.navbar.navbar-light
+.breadcrumb .nav-item.active
+.nav-link, .navbar.navbar-light
+.navbar-nav .nav-item.active>
+.nav-link {
+  background-color: rgba(128, 128, 128, .06)
+}
 </style>
