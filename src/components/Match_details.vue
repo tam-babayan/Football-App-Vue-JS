@@ -1,17 +1,13 @@
 <template>
-  <div>
-    <v-layout row>
+    <v-layout>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-          <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
-            <v-btn flat small color="blue">Back to Matches </v-btn>
-          </router-link>
+          <breadCrumbsMatch :competitionId =competitionId></breadCrumbsMatch>
           <v-list>
             <v-list-tile class='text-mx-center'>
               <v-list-tile-content>
                 <v-list-tile-title class='text-xs-center font-weight-bold headline'>
                   <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
-                    <!-- <v-img :src="getLeagueLogo"/> -->
                     {{this.match.competition.name}}
                   </router-link>
                 </v-list-tile-title>
@@ -36,22 +32,18 @@
             </v-list-tile>
             <v-divider inset></v-divider>
             <v-list-tile>
-              <div>
                 <v-list-tile-action>
                   <v-icon color='indigo'>calendar_today</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content class='text-xs-center'>
                   {{ moment(match.utcDate).format('YYYY-MM-DD') }}
                 </v-list-tile-content>
-              </div>
-              <div>
                 <v-list-tile-action>
                   <v-icon color='indigo'>access_time</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content class='text-xs-center'>
                   {{ moment(match.utcDate).format('H:mm') }}
                 </v-list-tile-content>
-              </div>
             </v-list-tile>
             <v-divider inset></v-divider>
 
@@ -71,7 +63,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </div>
 </template>
 
 <script>
@@ -81,6 +72,7 @@ import GoogleMap from './GoogleMap'
 export default {
   data () {
     return {
+      // competitionId: this.match.competition.id,
       homeTeam: {},
       awayTeam: {},
       match: {},
@@ -145,11 +137,6 @@ export default {
 </script>
 
 <style scoped>
-  .v-list__tile {
-    display: flex;
-    justify-content: space-around;
-  }
-
   .v-list__tile__title {
     height: 70px;
     /* margin-bottom: 20px; */
@@ -181,5 +168,4 @@ export default {
   .v-list>div {
     height: 70px;
   }
-
 </style>

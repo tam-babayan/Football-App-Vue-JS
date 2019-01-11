@@ -2,7 +2,7 @@
 <div class="container">
   <v-card>
     <v-card-title class="text-xs-left">
-      <v-img :src="getLeagueLogo"/>
+      <v-img :src="getLeagueLogo" :width='50'/>
       <v-spacer></v-spacer>
       <h3 class="font-weight-bold ">{{getLeagueName}}</h3>
       <v-spacer></v-spacer>

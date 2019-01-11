@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -7,11 +5,17 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import NavBar from './components/Nav_bar.vue'
 import LeaguesIcons from './components/Leagues_icons.vue'
+import BreadCrumbsMatch from './components/Breadcrumbs_match_details.vue'
+import BreadCrumbsTeam from './components/Breadcrumbs_team_details.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import VueBreadcrumbs from 'vue-breadcrumbs'
 
 Vue.use(Vuetify)
 Vue.component('navBar', NavBar)
 Vue.component('leaguesIcons', LeaguesIcons)
+Vue.component('breadCrumbsMatch', BreadCrumbsMatch)
+Vue.component('breadCrumbsTeam', BreadCrumbsTeam)
+Vue.use(VueBreadcrumbs)
 
 Vue.use(VueGoogleMaps, {
   load: {

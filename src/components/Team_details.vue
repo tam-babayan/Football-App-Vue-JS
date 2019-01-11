@@ -2,9 +2,7 @@
   <v-layout>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <!-- <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
-            <v-btn flat small>Back to Matches </v-btn>
-          </router-link> -->
+        <breadCrumbsTeam :competitionId =competitionId></breadCrumbsTeam>
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0">
@@ -56,6 +54,11 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    computed: {
+      getLogo () {
+        return this.team.crestUrl ? this.team.crestUrl : './static/img/ball.png'
+      }
     }
   }
 }
