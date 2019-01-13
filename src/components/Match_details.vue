@@ -2,31 +2,31 @@
     <v-layout>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-          <breadCrumbsMatch :competitionId =competitionId></breadCrumbsMatch>
+          <breadCrumbsMatch :competitionId=competitionId></breadCrumbsMatch>
           <v-list>
             <v-list-tile class='text-mx-center'>
               <v-list-tile-content>
                 <v-list-tile-title class='text-xs-center font-weight-bold headline'>
-                  <router-link :to="{ path: '/game-list/' + this.match.competition.id}">
-                    {{this.match.competition.name}}
+                  <router-link :to="{ path: '/game-list/' + competitionId}">
+                    {{competitionName}}
                   </router-link>
                 </v-list-tile-title>
                 <v-list-tile-sub-title class='text-xs-center'>
-                  {{this.match.group}}
+                  {{matchGroup}}
                 </v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
             <v-list-tile class='text-md-center'>
-              <v-list-tile-content class="logos">
-                <router-link :to="{ path: '/team-details/' + match.homeTeam.id}">
-                  <v-img :height="50" :width="50" :src="this.homeTeam.crestUrl" />
-                  {{this.match.homeTeam.name}}
+              <v-list-tile-content align-center justify-center row>
+                <router-link :to="{ path: '/team-details/' + homeTeamId}">
+                  <v-img :height="50" :width="50" :src="homeTeamLogo" />
+                  {{homeTeamName}}
                 </router-link>
               </v-list-tile-content>
-              <v-list-tile-content class="logos">
-                <router-link :to="{ path: '/team-details/' + match.awayTeam.id}">
-                  <v-img :height="50" :width="50" :src="this.awayTeam.crestUrl" />
-                  {{this.match.awayTeam.name}}
+              <v-list-tile-content align-center justify-center row>
+                <router-link :to="{ path: '/team-details/' + awayTeamId}">
+                  <v-img :height="50" :width="50" :src="awayTeamLogo" />
+                  {{awayTeamName}}
                 </router-link>
               </v-list-tile-content>
             </v-list-tile>
@@ -53,13 +53,16 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  {{this.match.venue}}
+                  {{matchVenue}}
                 </v-list-tile-title>
-                <v-list-tile-sub-title>{{this.homeTeam.address}}</v-list-tile-sub-title>
+                <v-list-tile-sub-title class="text-xs-left">
+                  {{homeTeamAddress}}
+                </v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
-          <google-map />
+          <div id=map><iframe width="100%" height="450" frameborder="0"
+          style="border:0" :src=mapUrl></iframe></div>
         </v-card>
       </v-flex>
     </v-layout>
@@ -68,19 +71,26 @@
 <script>
 import axios from 'axios'
 import competitions from '../assets/data/competitions.json'
-import GoogleMap from './GoogleMap'
 export default {
   data () {
     return {
-      // competitionId: this.match.competition.id,
+      competitionId: null,
+      competitionName: null,
+      matchGroup: null,
+      homeTeamId: null,
+      homeTeamLogo: '',
+      homeTeamName: null,
+      awayTeamLogo: '',
+      awayTeamName: null,
+      matchVenue: null,
+      homeTeamAddress: null,
+      awayTeamId: null,
       homeTeam: {},
       awayTeam: {},
       match: {},
-      competitions: competitions
+      competitions: competitions,
+      mapUrl: ''
     }
-  },
-  components: {
-    GoogleMap
   },
   mounted () {
     this.getData()
@@ -101,12 +111,25 @@ export default {
         .then(response => {
           this.match = response.data.match
           console.log(this.match)
+          this.competitionId = response.data.match.competition.id
+          this.competitionName = this.match.competition.name
+          this.matchGroup = this.match.group
+          this.homeTeamId = this.match.homeTeam.id
+          this.homeTeamName = this.match.homeTeam.name
+          this.matchVenue = this.match.venue
           this.getLogos(this.match.homeTeam.id).then(response => {
             this.homeTeam = response.data
+            this.homeTeamLogo = this.homeTeam.crestUrl
+            this.homeTeamAddress = this.homeTeam.address
             console.log(this.homeTeam)
+
+            this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address + '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
           })
           this.getLogos(this.match.awayTeam.id).then(response => {
             this.awayTeam = response.data
+            this.awayTeamLogo = this.awayTeam.crestUrl
+            this.awayTeamName = this.match.awayTeam.name
+            this.awayTeamId = this.match.awayTeam.id
             console.log(this.awayTeam)
           })
         })
@@ -129,7 +152,7 @@ export default {
   },
   computed: {
     getLeagueLogo () {
-      const tempArr = this.competitions.filter(one => one.id === this.match.competition.id)
+      const tempArr = this.competitions.filter(one => one.id === this.competitionId)
       return tempArr[0].logo
     }
   }
@@ -139,32 +162,18 @@ export default {
 <style scoped>
   .v-list__tile__title {
     height: 70px;
-    /* margin-bottom: 20px; */
   }
-
   .theme--light.v-list {
     padding-left: 30px;
     padding-right: 30px;
   }
-
   .v-list__tile__sub-title {
     font-size: 15px;
     overflow: visible;
   }
-
-  .theme--light.v-icon {
-    padding-left: 4px;
-  }
-
   .v-list__tile__content {
     overflow: unset;
   }
-
-  .logos {
-    display: flex;
-    align-items: center;
-  }
-
   .v-list>div {
     height: 70px;
   }

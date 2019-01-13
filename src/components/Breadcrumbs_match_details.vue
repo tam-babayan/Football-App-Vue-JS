@@ -6,26 +6,28 @@
 
 <script>
 export default {
-  data: () => ({
-    // props: [competitionId],
-    items: [
-      {
-        text: 'Leagues',
-        disabled: false,
-        href: '/'
-      },
-      {
-        text: 'Matches',
-        disabled: false,
-        href: ''
-      },
-      {
-        text: 'Match Details',
-        disabled: true,
-        href: ''
-      }
-    ]
-  })
+  props: ['competitionId'],
+  computed: {
+    items () {
+      return [
+        {
+          text: 'Leagues',
+          disabled: false,
+          href: '/'
+        },
+        {
+          text: 'Matches',
+          disabled: false,
+          href: '/#/game-list/' + this.competitionId
+        },
+        {
+          text: 'Match Details',
+          disabled: true,
+          href: ''
+        }
+      ]
+    }
+  }
 }
 </script>
 

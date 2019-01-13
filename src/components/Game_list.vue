@@ -74,7 +74,6 @@ export default {
         .then(response => {
           this.matches = response.data.matches
           this.loading = false
-          console.log(this.matches)
         })
         .catch(function (error) {
           console.log(error)
@@ -90,7 +89,6 @@ export default {
         .get('https://api.football-data.org/v2/competitions/' + this.$route.params.id + '/teams')
         .then(response => {
           this.logos = response.data
-          console.log(this.logos)
         })
         .catch(function (error) {
           console.log(error)
