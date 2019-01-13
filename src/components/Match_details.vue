@@ -19,13 +19,13 @@
             <v-list-tile class='text-md-center'>
               <v-list-tile-content align-center justify-center row>
                 <router-link :to="{ path: '/team-details/' + homeTeamId}">
-                  <v-img :height="50" :width="50" :src="homeTeamLogo" />
+                  <v-img :height="50" :width="50" :src="getTeamLogo(this.homeTeamLogo)" />
                   {{homeTeamName}}
                 </router-link>
               </v-list-tile-content>
               <v-list-tile-content align-center justify-center row>
                 <router-link :to="{ path: '/team-details/' + awayTeamId}">
-                  <v-img :height="50" :width="50" :src="awayTeamLogo" />
+                  <v-img :height="50" :width="50" :src="getTeamLogo(this.awayTeamLogo)" />
                   {{awayTeamName}}
                 </router-link>
               </v-list-tile-content>
@@ -117,7 +117,7 @@ export default {
           this.homeTeamId = this.match.homeTeam.id
           this.homeTeamName = this.match.homeTeam.name
           this.matchVenue = this.match.venue
-          this.getLogos(this.match.homeTeam.id).then(response => {
+          this.getLogosfromAPI(this.match.homeTeam.id).then(response => {
             this.homeTeam = response.data
             this.homeTeamLogo = this.homeTeam.crestUrl
             this.homeTeamAddress = this.homeTeam.address
@@ -125,7 +125,7 @@ export default {
 
             this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address + '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
           })
-          this.getLogos(this.match.awayTeam.id).then(response => {
+          this.getLogosfromAPI(this.match.awayTeam.id).then(response => {
             this.awayTeam = response.data
             this.awayTeamLogo = this.awayTeam.crestUrl
             this.awayTeamName = this.match.awayTeam.name
@@ -137,7 +137,7 @@ export default {
           console.log(error)
         })
     },
-    getLogos (id) {
+    getLogosfromAPI (id) {
       return axios
         .create({
           headers: {
@@ -148,6 +148,9 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    getTeamLogo (teamLogo) {
+      return teamLogo || './static/img/ball1.png'
     }
   },
   computed: {

@@ -8,19 +8,20 @@
       <v-spacer></v-spacer>
       <v-text-field v-model='search' append-icon='search' label='Search' single-line hide-details></v-text-field>
     </v-card-title>
-    <v-data-table :headers='headers' :items='matches' :search='search' :pagination.sync='pagination'
+    <v-data-table :loading='loading' :headers='headers' :items='matches' :search='search' :pagination.sync='pagination'
       class="elevation-1">
-        <template slot='items' slot-scope='props'>
+        <v-progress-linear slot="progress" color="black" indeterminate></v-progress-linear>
+        <template slot="items" slot-scope="props">
           <td class='text-xs-left'>
             <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
-            <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)"/>
-            {{ props.item.homeTeam.name }}
+              <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)"/>
+              {{ props.item.homeTeam.name }}
             </router-link>
           </td>
           <td class='text-xs-left'>
               <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
-              <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)"/>
-              {{ props.item.awayTeam.name }}
+                <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)"/>
+                {{ props.item.awayTeam.name }}
               </router-link>
           </td>
           <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
@@ -42,6 +43,7 @@ export default {
     return {
       competitions: competitions,
       search: null,
+      loading: true,
       pagination: {
         rowsPerPage: 100,
         sortBy: 'utcDate'
@@ -96,7 +98,7 @@ export default {
     },
     getTeamLogo (id) {
       const tempArr = this.logos.teams.filter(one => one.id === id)
-      return tempArr[0].crestUrl
+      return tempArr[0].crestUrl || './static/img/ball1.png'
     }
   },
   computed: {
