@@ -6,6 +6,7 @@ import Home from '../components/Home.vue'
 import GameList from '../components/Game_list.vue'
 import MatchDetails from '../components/Match_details.vue'
 import TeamDetails from '../components/Team_details.vue'
+import SignUp from '../components/Sign_up.vue'
 import moment from 'moment'
 
 Vue.use(Vuetify)
@@ -36,6 +37,12 @@ export default new Router({
     path: '/team-details/:id',
     name: 'TeamDetails',
     component: TeamDetails,
+    props: true
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp,
     props: true
   }
   ]

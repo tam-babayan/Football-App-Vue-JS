@@ -30,9 +30,6 @@
 </template>
 
 <script>
-// import firebase from 'firebase/app'
-// import 'firebase/auth'
-// import 'firebase/database'
 import competitions from '../assets/data/competitions.json'
 export default {
   data: function () {
