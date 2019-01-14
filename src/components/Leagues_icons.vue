@@ -1,23 +1,23 @@
 <template>
 <main>
-    <div class="container">
+    <div class='container'>
       <hr>
-      <section class="text-center mb-4">
-        <div class="row wow fadeIn">
-          <div class="col-lg-3 col-md-6 mb-4" v-for="competition in competitions" :key="competition.id">
-            <div class="card">
-              <div class="view overlay zoom">
-                <router-link :to="{ path: '/game-list/' + competition.id }">
-                  <img :src="competition.logo" class="card-img-top " alt="league">
+      <section class='text-center mb-4'>
+        <div class='row wow fadeIn'>
+          <div class='col-lg-3 col-md-6 mb-4' v-for='competition in competitions' :key='competition.id'>
+            <div class='card'>
+              <div class='view overlay zoom'>
+                <router-link :to='{ path: "/game-list/" + competition.id }'>
+                  <img :src='competition.logo' class='card-img-top ' alt='league'>
                 </router-link>
               </div>
-              <div class="card-body text-center">
-                <a href="" class="grey-text">
+              <div class='card-body text-center'>
+                <a href='' class='grey-text'>
                   <h5>{{competition.country}}</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="" class="dark-grey-text">{{competition.name}}</a>
+                    <a href='' class='dark-grey-text'>{{competition.name}}</a>
                   </strong>
                 </h5>
               </div>
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+// import firebase from 'firebase/app'
+// import 'firebase/auth'
+// import 'firebase/database'
 import competitions from '../assets/data/competitions.json'
 export default {
   data: function () {

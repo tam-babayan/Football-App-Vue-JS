@@ -1,8 +1,10 @@
 <template>
-  <div id='app'>
+  <v-app>
     <navBar></navBar>
-    <router-view/>
-  </div>
+    <div id="container">
+      <router-view/>
+    </div>
+  </v-app>
 </template>
 
 <script>
@@ -12,4 +14,7 @@ export default {
 </script>
 
 <style>
+#container {
+  margin-top: 40px
+}
 </style>

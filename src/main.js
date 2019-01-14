@@ -14,6 +14,16 @@ Vue.component('leaguesIcons', LeaguesIcons)
 Vue.component('breadCrumbsMatch', BreadCrumbsMatch)
 Vue.use(VueBreadcrumbs)
 
+// Initialize Firebase
+// var config = {
+//   apiKey: '<API_KEY>',
+//   authDomain: '<PROJECT_ID>.firebaseapp.com',
+//   databaseURL: 'https://<DATABASE_NAME>.firebaseio.com',
+//   projectId: '<PROJECT_ID>',
+//   storageBucket: '<BUCKET>.appspot.com',
+//   messagingSenderId: '<SENDER_ID>'
+// }
+// this.firebase.initializeApp(config)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

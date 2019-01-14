@@ -1,39 +1,53 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-          <ul class="navbar-nav mr-auto">
-            <router-link class="nav-item" :to="{ path: '/' }" tag="li">
-              <a class="nav-link">Home</a>
-            </router-link>
-          </ul>
-      </div>
+  <div>
+    <v-navigation-drawer v-model="drawer" app temporary>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                <span>Menu</span>
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
+          <template v-for="(item, index) in items">
+            <v-list-tile :href="item.href" :to="{name: item.href}" :key="index">
+              <v-list-tile-action>
+                <v-icon light v-html="item.icon"></v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title v-html="item.title"></v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </template>
+        </v-list>
+      </v-navigation-drawer>
+      <v-toolbar app>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title>Super Puper Football Scores</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>lock</v-icon>
+        </v-btn>
+      </v-toolbar>
     </div>
-  </nav>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      drawer: false,
+      items: [{
+        href: 'Home',
+        router: true,
+        title: 'Home',
+        icon: 'home'
+      }]
+    }
+  }
+}
 </script>
 
 <style scope>
-.container {
-  font-size: 20px;
-}
-.navbar.navbar-light
-.breadcrumb .nav-item.active
-.nav-link, .navbar.navbar-light
-.navbar-nav .nav-item.active>
-.nav-link {
-  background-color: rgba(128, 128, 128, .06)
-}
 </style>
