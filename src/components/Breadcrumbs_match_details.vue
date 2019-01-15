@@ -33,6 +33,6 @@ export default {
 
 <style scope>
 .v-breadcrumbs {
-    padding: 18px 35px;
+    padding: 60px 55px;
 }
 </style>

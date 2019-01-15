@@ -6,6 +6,7 @@ import 'vuetify/dist/vuetify.min.css'
 import NavBar from './components/Nav_bar.vue'
 import LeaguesIcons from './components/Leagues_icons.vue'
 import BreadCrumbsMatch from './components/Breadcrumbs_match_details.vue'
+import Favorites from './components/Favorites.vue'
 import VueBreadcrumbs from 'vue-breadcrumbs'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -15,6 +16,7 @@ Vue.use(Vuetify)
 Vue.component('navBar', NavBar)
 Vue.component('leaguesIcons', LeaguesIcons)
 Vue.component('breadCrumbsMatch', BreadCrumbsMatch)
+Vue.component('favorites', Favorites)
 Vue.use(VueBreadcrumbs)
 
 // Initialize Firebase
@@ -28,6 +30,8 @@ var config = {
 }
 firebase.initializeApp(config)
 Vue.config.productionTip = false
+
+export const eventBus = new Vue()
 
 /* eslint-disable no-new */
 new Vue({

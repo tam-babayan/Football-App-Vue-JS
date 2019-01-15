@@ -52,6 +52,7 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import {eventBus} from '../main'
 export default {
   data () {
     return {
@@ -68,6 +69,11 @@ export default {
         router: true,
         title: 'SignUp',
         icon: 'how_to_reg'
+      }, {
+        href: 'Favorites',
+        router: true,
+        title: 'Favorites',
+        icon: 'favorite'
       }]
     }
   },
@@ -82,10 +88,14 @@ export default {
           this.name = user.displayName
           this.isLoggedIn = true
         } else {
-          console.log('qaq qezi')
           this.isLoggedIn = false
         }
+        eventBus.$emit('changeOfUserStatus', this.isLoggedIn)
       })
+    },
+    signIn () {
+      var provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
     },
     signOut () {
       firebase.auth().signOut().then(() => {
@@ -93,10 +103,6 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
-    },
-    signIn () {
-      var provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
     }
   }
 }

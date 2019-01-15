@@ -7,6 +7,7 @@ import GameList from '../components/Game_list.vue'
 import MatchDetails from '../components/Match_details.vue'
 import TeamDetails from '../components/Team_details.vue'
 import SignUp from '../components/Sign_up.vue'
+import Favorites from '../components/Favorites.vue'
 import moment from 'moment'
 
 Vue.use(Vuetify)
@@ -43,6 +44,12 @@ export default new Router({
     path: '/signup',
     name: 'SignUp',
     component: SignUp,
+    props: true
+  },
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: Favorites,
     props: true
   }
   ]
