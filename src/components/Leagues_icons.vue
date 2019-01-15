@@ -8,23 +8,21 @@
             <div class='card'>
               <div class='view overlay zoom'>
                 <router-link :to='{ path: "/game-list/" + competition.id }'>
-                  <img :src='competition.logo' class='card-img-top ' alt='league'>
+                  <img :src='competition.logo' class='card-img-top ' alt='league'/>
                 </router-link>
               </div>
               <div class='card-body text-center'>
-                <a href='' class='grey-text'>
-                  <h5>{{competition.country}}</h5>
-                </a>
-                <h5>
-                  <strong>
-                    <a href='' class='dark-grey-text'>{{competition.name}}</a>
-                  </strong>
-                </h5>
-                <button class="pink-text" @click="changeFavorites(competition.id)">
-                  <i class="material-icons"  style="font-size: 40px">
-                    favorite_border
-                  </i>
-                </button>
+                  <h5 class='grey-text'>{{competition.country}}</h5>
+                  <h5>
+                    <strong>
+                      <a href='' class='dark-grey-text'>{{competition.name}}</a>
+                    </strong>
+                  </h5>
+                  <v-btn flat icon color="pink" v-if="isFavoritesLoaded"
+                    @click='changeFavorites(competition.id)'>
+                    <v-icon v-if="competition.isFavorite">favorite</v-icon>
+                    <v-icon v-else>favorite_border</v-icon>
+                  </v-btn>
               </div>
             </div>
           </div>
@@ -35,40 +33,58 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import competitions from '../assets/data/competitions.json'
-import {eventBus} from '../main'
+import {database} from '../firebase/init'
 export default {
   data: function () {
     return {
       competitions: competitions,
       isLoggedIn: null,
-      favorites: []
+      user: null,
+      isFavoritesLoaded: false
     }
   },
   created () {
-    eventBus.$on('changeOfUserStatus', status => {
-      this.isLoggedIn = status
-      console.log(this.isLoggedIn)
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user
+        this.isLoggedIn = true
+        this.fetchFavorites()
+      } else {
+        this.isLoggedIn = false
+      }
     })
   },
   methods: {
     changeFavorites (id) {
-      if (!this.isLoggedIn) {
-        alert('Please Sign In')
-      } else {
-        if (!this.favorites.includes(id)) {
-          this.favorites.push(id)
-          console.log(this.favorites)
-        } else {
-          for (let i = 0; i < this.favorites.length; i++) {
-            if (this.favorites[i] === id) {
-              this.favorites.splice(i, 1)
-            }
+      if (this.isLoggedIn) {
+        this.competitions = this.competitions.map(one => {
+          if (one.id === id) {
+            one.isFavorite = !one.isFavorite
           }
-          eventBus.$emit('changeOfFavorites', this.favorites)
-          // this.favorites.map(one => one !== id)
-          console.log(this.favorites)
-        }
+          return one
+        })
+        var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
+        database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
+      }
+    },
+    fetchFavorites () {
+      if (this.isLoggedIn) {
+        database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
+          .then(snapshot => {
+            var favorites = snapshot.val()
+            this.competitions = this.competitions.map(one => {
+              if (favorites.includes(one.id)) {
+                one.isFavorite = true
+              }
+              return one
+            })
+          })
+          .finally(() => {
+            this.isFavoritesLoaded = true
+          })
       }
     }
   }
@@ -76,4 +92,7 @@ export default {
 </script>
 
 <style scoped>
+/* i:hover {
+  transform: scale(1.5);
+} */
 </style>

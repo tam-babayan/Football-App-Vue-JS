@@ -11,7 +11,7 @@
           </v-list-tile>
           <v-divider></v-divider>
           <template v-for="(item, index) in items">
-            <v-list-tile :href="item.href" :to="{name: item.href}" :key="index">
+            <v-list-tile :href="item.href" :to="{name: item.href}" :key="index" exact>
               <v-list-tile-action>
                 <v-icon light v-html="item.icon"></v-icon>
               </v-list-tile-action>
@@ -52,45 +52,54 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import {eventBus} from '../main'
 export default {
   data () {
     return {
       drawer: false,
       name: null,
-      isLoggedIn: null,
-      items: [{
-        href: 'Home',
-        router: true,
-        title: 'Home',
-        icon: 'home'
-      }, {
-        href: 'SignUp',
-        router: true,
-        title: 'SignUp',
-        icon: 'how_to_reg'
-      }, {
-        href: 'Favorites',
-        router: true,
-        title: 'Favorites',
-        icon: 'favorite'
-      }]
+      isLoggedIn: null
     }
   },
   mounted () {
     this.getCurrentUser()
   },
+  computed: {
+    items () {
+      var items = [{
+        href: 'Home',
+        router: true,
+        title: 'Home',
+        icon: 'home'
+      }]
+
+      if (this.isLoggedIn) {
+        items.push({
+          href: 'Favorites',
+          router: true,
+          title: 'Favorites',
+          icon: 'favorite'
+        })
+      } else {
+        items.push({
+          href: 'SignUp',
+          router: true,
+          title: 'SignUp',
+          icon: 'how_to_reg'
+        })
+      }
+
+      return items
+    }
+  },
   methods: {
     getCurrentUser () {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          console.log(user)
           this.name = user.displayName
           this.isLoggedIn = true
         } else {
           this.isLoggedIn = false
         }
-        eventBus.$emit('changeOfUserStatus', this.isLoggedIn)
       })
     },
     signIn () {

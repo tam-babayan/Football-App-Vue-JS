@@ -15,9 +15,8 @@ Vue.use(Router)
 Vue.prototype.moment = moment
 
 export default new Router({
-  linkExactActiveClass: 'active',
   routes: [{
-    path: '/',
+    path: '',
     name: 'Home',
     component: Home,
     props: true
