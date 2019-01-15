@@ -79,6 +79,12 @@ export default {
           title: 'Favorites',
           icon: 'favorite'
         })
+        items.push({
+          href: 'Conversations',
+          router: true,
+          title: 'Conversations',
+          icon: 'chat'
+        })
       } else {
         items.push({
           href: 'SignUp',

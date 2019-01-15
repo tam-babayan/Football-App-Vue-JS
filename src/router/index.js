@@ -8,6 +8,7 @@ import MatchDetails from '../components/Match_details.vue'
 import TeamDetails from '../components/Team_details.vue'
 import SignUp from '../components/Sign_up.vue'
 import Favorites from '../components/Favorites.vue'
+import Conversations from '../components/Conversations.vue'
 import moment from 'moment'
 
 Vue.use(Vuetify)
@@ -49,6 +50,12 @@ export default new Router({
     path: '/favorites',
     name: 'Favorites',
     component: Favorites,
+    props: true
+  },
+  {
+    path: '/conversations',
+    name: 'Conversations',
+    component: Conversations,
     props: true
   }
   ]
