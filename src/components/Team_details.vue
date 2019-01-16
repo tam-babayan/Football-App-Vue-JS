@@ -2,23 +2,23 @@
   <v-layout>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <v-card-title>
-            <h4 class="headline mb-0">
-                <img :src = "logo" :width="200" />
+        <v-card-title class="justify-center">
+          <img :src = "logo" :width="200" />
+            <h4 class="headline mb-0 font-weight-bold">
                 {{teamName}}
             </h4>
         </v-card-title>
         <v-container>
-          <p>Country: {{teamAreaName}}</p>
-          <p>Address: {{teamAddress}}</p>
-          <p>Short name: {{teamShortName}}</p>
-          <p>Founded: {{yearFounded}}</p>
-          <p>Website: {{teamWebsite}}</p>
-          <p style="word-wrap: break-word">Email: {{teamEmail}}</p>
-          <p>Phone: {{teamPhone}}</p>
-          <p>Club Colors: {{teamColors}}</p>
-          <p>Venue: {{teamVenue}}</p>
-          <p>Coach: {{teamCoach}}</p>
+          <p><v-icon color='blue'>location_on</v-icon> {{teamAreaName}}</p>
+          <p><span class="font-weight-medium">Short name:</span> {{teamShortName}}</p>
+          <p><span class="font-weight-medium">Founded:</span> {{yearFounded}}</p>
+          <p><span class="font-weight-medium">Club Colors:</span> {{teamColors}}</p>
+          <p><span class="font-weight-medium">Coach:</span> {{teamCoach}}</p>
+          <p><span class="font-weight-medium">Website: </span> <a :href="teamWebsite">{{teamWebsite}}</a></p>
+          <p><v-icon  color="blue">email</v-icon><a :href="teamEmail">  {{teamEmail}}</a></p>
+          <p><v-icon color='blue'>phone</v-icon><a :href="teamPhone" >{{teamPhone}}</a></p>
+          <p><v-icon color='blue'>location_on</v-icon> {{teamAddress}}</p>
+          <p><v-icon color='blue'>location_on</v-icon> {{teamVenue}}</p>
           <table class="table">
             <thead>
               <th class="text-xs-center">Player</th>
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
               <tr v-for="player in players" :key ='player.id'>
-                <td class="text-xs-center">{{player.name}}</td>
+                <td class="text-xs-center font-weight-medium">{{player.name}}</td>
                 <td class="text-xs-center">{{player.position}}</td>
                 <td class="text-xs-center">{{player.shirtNumber}}</td>
                 <td class="text-xs-center">{{moment().diff(player.dateOfBirth, 'years')}}</td>
