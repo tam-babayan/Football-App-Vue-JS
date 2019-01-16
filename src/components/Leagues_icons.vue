@@ -18,7 +18,7 @@
                       <a href='' class='dark-grey-text'>{{competition.name}}</a>
                     </strong>
                   </h5>
-                  <v-btn flat icon color="pink" v-if="isFavoritesLoaded"
+                  <v-btn flat icon color="red" v-if="isFavoritesLoaded"
                     @click='changeFavorites(competition.id)'>
                     <v-icon v-if="competition.isFavorite">favorite</v-icon>
                     <v-icon v-else>favorite_border</v-icon>
@@ -92,7 +92,4 @@ export default {
 </script>
 
 <style scoped>
-/* i:hover {
-  transform: scale(1.5);
-} */
 </style>
