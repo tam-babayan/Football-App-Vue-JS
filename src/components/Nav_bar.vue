@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <v-navigation-drawer v-model="drawer" app class="grey lighten-4" temporary>
         <v-list>
           <v-list-tile>
@@ -42,7 +42,7 @@
           Loading...
         </div>
       </v-toolbar>
-  </v-container>
+  </div>
 </template>
 
 <script>
