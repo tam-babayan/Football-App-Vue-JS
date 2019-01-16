@@ -1,138 +1,71 @@
 <template>
-<v-layout justify-center>
+<v-container grid-list-xs px-2>
+  <v-layout align-center justify-center>
     <v-flex xs12 sm6>
-      <v-toolbar color="white" dark justify-center>
-        <v-toolbar-title font-weight-bold headline>
-          <router-link :to="{ path: '/game-list/' + competitionId}">
-            {{competitionName}}
-          </router-link>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-      </v-toolbar>
-
+      <breadCrumbsMatch class="justify-left" :competitionId=competitionId></breadCrumbsMatch>
       <v-card>
-        <v-container fluid grid-list-md>
-          <v-layout row wrap>
-            <v-flex>
-              <v-card>
-                  <router-link :to="{ path: '/team-details/' + homeTeamId}">
-                    <v-img :height="50" :width="50" :src="getTeamLogo(this.homeTeamLogo)" />
-                      {{homeTeamName}}
-                  </router-link>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn icon>
-                    <v-icon>favorite</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>bookmark</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>share</v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-              <v-card>
-                  <router-link :to="{ path: '/team-details/' + awayTeamId}">
-                  <v-img :height="50" :width="50" :src="getTeamLogo(this.awayTeamLogo)" />
-                    {{awayTeamName}}
-                  </router-link>
-                  <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn icon>
-                    <v-icon>favorite</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>bookmark</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>share</v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-              <v-card>
-                  <v-icon color='indigo'>calendar_today</v-icon>
-                  {{ moment(match.utcDate).format('YYYY-MM-DD') }}
-                  <v-icon color='indigo'>location_on</v-icon>
-                  {{ moment(match.utcDate).format('H:mm') }}
-                  <v-spacer></v-spacer>
-                  <v-card-actions>
-                  <iframe width="100%" height="350" frameborder="0" style="border:0" :src=mapUrl></iframe>
-                </v-card-actions>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
+        <v-card-title class="justify-center">
+          <router-link :to="{ path: '/game-list/' + competitionId}">
+            <h3 class="font-weight-medium">{{competitionName}}</h3>
+          </router-link>
+        </v-card-title>
+        <v-layout justify-center row>
+          <v-flex px-4>
+            <router-link :to="{ path: '/team-details/' + homeTeamId}">
+              <v-img :height="120" :width="120" :src="getTeamLogo(this.homeTeamLogo)"/>
+              <v-spacer></v-spacer>
+              {{homeTeamName}}
+            </router-link>
+            <v-card-actions class="justify-center">
+              <v-btn icon>
+                <v-icon color='pink'>favorite</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon color='blue'>share</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-flex px-4>
+            <router-link :to="{ path: '/team-details/' + awayTeamId}">
+              <v-img :height="120" :width="120" :src="getTeamLogo(this.awayTeamLogo)" />
+              <v-spacer></v-spacer>
+              {{awayTeamName}}
+            </router-link>
+            <v-card-actions class="justify-center">
+              <v-btn icon>
+                <v-icon color='pink'>favorite</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon color='blue'>share</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-flex>
+        </v-layout>
+        <v-spacer></v-spacer>
+        <v-layout>
+          <v-flex px-4>
+            <v-icon color='blue'>calendar_today</v-icon>
+            {{ moment(match.utcDate).format('YYYY-MM-DD') }}
+            <v-icon color='blue'>location_on</v-icon>
+            {{ moment(match.utcDate).format('H:mm') }}
+          </v-flex>
+        </v-layout>
+        <v-spacer></v-spacer>
+        <v-layout>
+          <v-flex px-4>
+            <v-icon color='blue'>location_on</v-icon>
+            {{matchVenue}}
+            {{homeTeamAddress}}
+            <v-card-actions>
+              <iframe width="100%" height="300" frameborder="0" style="border:0" :src=mapUrl></iframe>
+            </v-card-actions>
+          </v-flex>
+        </v-layout>
       </v-card>
     </v-flex>
   </v-layout>
-    <!-- <v-layout>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <breadCrumbsMatch :competitionId=competitionId></breadCrumbsMatch>
-          <v-list>
-            <v-list-tile class='text-mx-center'>
-              <v-list-tile-content>
-                <v-list-tile-title class='text-xs-center font-weight-bold headline'>
-                  <router-link :to="{ path: '/game-list/' + competitionId}">
-                    {{competitionName}}
-                  </router-link>
-                </v-list-tile-title>
-                <v-list-tile-sub-title class='text-xs-center'>
-                  {{matchGroup}}
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile class='text-md-center'>
-              <v-list-tile-content align-center justify-center row>
-                <router-link :to="{ path: '/team-details/' + homeTeamId}">
-                  <v-img :height="50" :width="50" :src="getTeamLogo(this.homeTeamLogo)" />
-                  {{homeTeamName}}
-                </router-link>
-              </v-list-tile-content>
-              <v-list-tile-content align-center justify-center row>
-                <router-link :to="{ path: '/team-details/' + awayTeamId}">
-                  <v-img :height="50" :width="50" :src="getTeamLogo(this.awayTeamLogo)" />
-                  {{awayTeamName}}
-                </router-link>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-divider inset></v-divider>
-            <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon color='indigo'>calendar_today</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content class='text-xs-center'>
-                  {{ moment(match.utcDate).format('YYYY-MM-DD') }}
-                </v-list-tile-content>
-                <v-list-tile-action>
-                  <v-icon color='indigo'>access_time</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content class='text-xs-center'>
-                  {{ moment(match.utcDate).format('H:mm') }}
-                </v-list-tile-content>
-            </v-list-tile>
-            <v-divider inset></v-divider>
-
-            <v-list-tile>
-              <v-list-tile-action>
-                <v-icon color='indigo'>location_on</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{matchVenue}}
-                </v-list-tile-title>
-                <v-list-tile-sub-title class="text-xs-left">
-                  {{homeTeamAddress}}
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-          <div id=map><iframe width="100%" height="450" frameborder="0"
-          style="border:0" :src=mapUrl></iframe></div>
-        </v-card>
-      </v-flex>
-    </v-layout> -->
+  </v-container>
 </template>
 
 <script>
@@ -190,7 +123,8 @@ export default {
             this.homeTeamAddress = this.homeTeam.address
             console.log(this.homeTeam)
 
-            this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address + '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
+            this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address +
+              '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
           })
           this.getLogosfromAPI(this.match.awayTeam.id).then(response => {
             this.awayTeam = response.data
@@ -230,21 +164,4 @@ export default {
 </script>
 
 <style scoped>
-  .v-list__tile__title {
-    height: 70px;
-  }
-  .theme--light.v-list {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .v-list__tile__sub-title {
-    font-size: 15px;
-    overflow: visible;
-  }
-  .v-list__tile__content {
-    overflow: unset;
-  }
-  .v-list>div {
-    height: 70px;
-  }
 </style>

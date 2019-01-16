@@ -32,7 +32,4 @@ export default {
 </script>
 
 <style scope>
-.v-breadcrumbs {
-    padding: 60px 55px;
-}
 </style>
