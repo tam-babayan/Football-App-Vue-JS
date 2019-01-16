@@ -18,10 +18,10 @@
                       <a href='' class='dark-grey-text'>{{competition.name}}</a>
                     </strong>
                   </h5>
-                  <v-btn flat icon color="red" v-if="isFavoritesLoaded"
+                  <v-btn v-if="isFavoritesLoaded" flat icon color="pink"
                     @click='changeFavorites(competition.id)'>
-                    <v-icon v-if="competition.isFavorite">favorite</v-icon>
-                    <v-icon v-else>favorite_border</v-icon>
+                    <v-icon v-if="competition.isFavorite" large>favorite</v-icon>
+                    <v-icon large v-else>favorite_border</v-icon>
                   </v-btn>
               </div>
             </div>

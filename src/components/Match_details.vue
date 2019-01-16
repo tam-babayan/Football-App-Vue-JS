@@ -1,5 +1,72 @@
 <template>
-    <v-layout>
+<v-layout justify-center>
+    <v-flex xs12 sm6>
+      <v-toolbar color="white" dark justify-center>
+        <v-toolbar-title font-weight-bold headline>
+          <router-link :to="{ path: '/game-list/' + competitionId}">
+            {{competitionName}}
+          </router-link>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+
+      <v-card>
+        <v-container fluid grid-list-md>
+          <v-layout row wrap>
+            <v-flex>
+              <v-card>
+                  <router-link :to="{ path: '/team-details/' + homeTeamId}">
+                    <v-img :height="50" :width="50" :src="getTeamLogo(this.homeTeamLogo)" />
+                      {{homeTeamName}}
+                  </router-link>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn icon>
+                    <v-icon>favorite</v-icon>
+                  </v-btn>
+                  <v-btn icon>
+                    <v-icon>bookmark</v-icon>
+                  </v-btn>
+                  <v-btn icon>
+                    <v-icon>share</v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+              <v-card>
+                  <router-link :to="{ path: '/team-details/' + awayTeamId}">
+                  <v-img :height="50" :width="50" :src="getTeamLogo(this.awayTeamLogo)" />
+                    {{awayTeamName}}
+                  </router-link>
+                  <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn icon>
+                    <v-icon>favorite</v-icon>
+                  </v-btn>
+                  <v-btn icon>
+                    <v-icon>bookmark</v-icon>
+                  </v-btn>
+                  <v-btn icon>
+                    <v-icon>share</v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+              <v-card>
+                  <v-icon color='indigo'>calendar_today</v-icon>
+                  {{ moment(match.utcDate).format('YYYY-MM-DD') }}
+                  <v-icon color='indigo'>location_on</v-icon>
+                  {{ moment(match.utcDate).format('H:mm') }}
+                  <v-spacer></v-spacer>
+                  <v-card-actions>
+                  <iframe width="100%" height="350" frameborder="0" style="border:0" :src=mapUrl></iframe>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-flex>
+  </v-layout>
+    <!-- <v-layout>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <breadCrumbsMatch :competitionId=competitionId></breadCrumbsMatch>
@@ -65,7 +132,7 @@
           style="border:0" :src=mapUrl></iframe></div>
         </v-card>
       </v-flex>
-    </v-layout>
+    </v-layout> -->
 </template>
 
 <script>

@@ -24,7 +24,7 @@
       </v-navigation-drawer>
       <v-toolbar app>
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title class="red--text">Gooaal!</v-toolbar-title>
+        <v-toolbar-title class="pink--text">Gooaal!</v-toolbar-title>
         <v-spacer></v-spacer>
         <div v-if="isLoggedIn === true">
           <v-btn @click="signOut()" small>
@@ -51,13 +51,6 @@ import 'firebase/auth'
 export default {
   data () {
     return {
-      notifications: [
-        'Mike, John responded to your email',
-        'You have 5 new tasks',
-        'You\'re now a friend with Andrew',
-        'Another Notification',
-        'Another One'
-      ],
       drawer: false,
       name: null,
       isLoggedIn: null
