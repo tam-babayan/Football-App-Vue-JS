@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { eventBus } from '../main'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 export default {
@@ -111,6 +112,7 @@ export default {
     signOut () {
       firebase.auth().signOut().then(() => {
         this.isLoggedIn = false
+        eventBus.$emit('userIsSignedOut', this.isLoggedIn)
       }).catch(function (error) {
         console.log(error)
       })

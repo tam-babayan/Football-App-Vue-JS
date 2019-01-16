@@ -47,7 +47,7 @@
           <v-flex px-4>
             <v-icon color='blue'>calendar_today</v-icon>
             {{ moment(match.utcDate).format('YYYY-MM-DD') }}
-            <v-icon color='blue'>location_on</v-icon>
+            <v-icon color='blue'>access_time</v-icon>
             {{ moment(match.utcDate).format('H:mm') }}
           </v-flex>
         </v-layout>

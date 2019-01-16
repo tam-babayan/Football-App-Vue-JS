@@ -27,11 +27,11 @@
   "country" : "England",
   "isFavorite": false
 },{
-  "id": "2019",
-  "name": "SERIE A",
-  "logo": "../../static/logos_leagues/2019.jpg",
-  "code": "SA",
-  "country" : "Italy",
+  "id": "2014",
+  "name": "La Liga",
+  "logo": "../../static/logos_leagues/2014.png",
+  "code": "PD",
+  "country" : "Spain",
   "isFavorite": false
 },{
   "id": "2017",

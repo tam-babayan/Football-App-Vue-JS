@@ -36,6 +36,7 @@ export default {
         this.fetchPosts()
       } else {
         this.isLoggedIn = false
+        this.$router.push('/')
       }
     })
   },
@@ -67,7 +68,7 @@ export default {
       // Access 'posts' collection
       database
         .ref('posts')
-        .once('value', data => {
+        .on('value', data => {
           console.log(data.val())
           this.messages = data.val()
         })

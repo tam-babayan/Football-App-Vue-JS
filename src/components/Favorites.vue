@@ -1,18 +1,19 @@
 <template>
-    <v-container>
-    <v-layout>
+<v-container>
+<v-layout align-space-around>
     <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-title class="text-xs-center display-2">
-            Favorites
-        </v-card-title>
-        <v-card-actions v-for="competition in favorites" :key="competition.id">
-            <router-link :to='{ path: "/game-list/" + competition.id }'>
-                <img :src='competition.logo' class='card-img-top ' alt='league'/>
-            </router-link>
-        <p class='grey-text'>{{competition.country}}</p>
-        <p class='dark-grey-text'>{{competition.name}}</p>
-        </v-card-actions>
+      <h1 class="font-weight-medium text-xs-center">Favorites</h1>
+      <v-card v-for="competition in favorites" :key="competition.id">
+        <v-flex>
+          <router-link :to='{ path: "/game-list/" + competition.id }'>
+            <v-img :src='competition.logo'  alt='league'/>
+          </router-link>
+        </v-flex>
+        <v-flex>
+          <p class="font-weight-medium text-xs-center">{{competition.country}}</p>
+          <v-spacer></v-spacer>
+          <p class="font-weight-medium text-xs-center">{{competition.name}}</p>
+        </v-flex>
       </v-card>
     </v-flex>
   </v-layout>
@@ -40,6 +41,7 @@ export default {
         this.fetchFavorites()
       } else {
         this.isLoggedIn = false
+        this.$router.push('/')
       }
     })
   },

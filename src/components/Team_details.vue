@@ -18,7 +18,7 @@
           <p><v-icon  color="blue">email</v-icon><a :href="teamEmail">  {{teamEmail}}</a></p>
           <p><v-icon color='blue'>phone</v-icon><a :href="teamPhone" >{{teamPhone}}</a></p>
           <p><v-icon color='blue'>location_on</v-icon> {{teamAddress}}</p>
-          <p><v-icon color='blue'>location_on</v-icon> {{teamVenue}}</p>
+          <p><v-icon color='blue'>assistant_photo</v-icon> {{teamVenue}}</p>
           <table class="table">
             <thead>
               <th class="text-xs-center">Player</th>

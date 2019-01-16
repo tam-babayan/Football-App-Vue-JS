@@ -18,10 +18,10 @@
                       <a href='' class='dark-grey-text'>{{competition.name}}</a>
                     </strong>
                   </h5>
-                  <v-btn v-if="isFavoritesLoaded" flat icon color="pink"
+                  <v-btn v-if="isFavoritesLoaded && isLoggedIn" flat icon color="pink"
                     @click='changeFavorites(competition.id)'>
-                    <v-icon v-if="competition.isFavorite" large>favorite</v-icon>
-                    <v-icon large v-else>favorite_border</v-icon>
+                    <v-icon v-if="competition.isFavorite" large>star</v-icon>
+                    <v-icon large v-else>star_border</v-icon>
                   </v-btn>
               </div>
             </div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { eventBus } from '../main'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import competitions from '../assets/data/competitions.json'
@@ -47,6 +48,9 @@ export default {
     }
   },
   created () {
+    eventBus.$on('userIsSignedOut', (status) => {
+      this.isLoggedIn = status
+    })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user
