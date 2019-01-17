@@ -24,11 +24,12 @@
       </v-navigation-drawer>
       <v-toolbar app>
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title class="pink--text">Gooaal!</v-toolbar-title>
+        <v-toolbar-title class="blue--text"></v-toolbar-title>
         <v-spacer></v-spacer>
         <div v-if="isLoggedIn === true">
+          {{name}}
           <v-btn @click="signOut()" small>
-            {{name}}
+            Sign Out
             <v-icon color="primary">account_circle</v-icon>
           </v-btn>
         </div>

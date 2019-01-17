@@ -8,6 +8,8 @@
               <v-toolbar dark color="grey darken-3">
                 <v-toolbar-title>SignUp form</v-toolbar-title>
               </v-toolbar>
+              <div class="g-signin2" data-onsuccess="onSignIn">
+              <v-btn @click="signup()" color="red">Google Sign Up</v-btn></div>
               <v-card-text>
                 <v-form @submit.prevent="signup" v-model="valid">
                   <v-text-field v-model="firstname" :rules="nameRules"
@@ -28,7 +30,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="signup()" color="primary">Sign Up</v-btn>
+                <v-btn color="primary">Sign Up</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

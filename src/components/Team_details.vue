@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex xs12 sm6 offset-sm3 pt-4>
       <v-card>
         <v-card-title class="justify-center">
           <img :src = "logo" :width="200" />
@@ -8,34 +8,36 @@
                 {{teamName}}
             </h4>
         </v-card-title>
+        <v-card-text>
         <v-container>
           <p><v-icon color='blue'>location_on</v-icon> {{teamAreaName}}</p>
           <p><span class="font-weight-medium">Short name:</span> {{teamShortName}}</p>
           <p><span class="font-weight-medium">Founded:</span> {{yearFounded}}</p>
           <p><span class="font-weight-medium">Club Colors:</span> {{teamColors}}</p>
           <p><span class="font-weight-medium">Coach:</span> {{teamCoach}}</p>
-          <p><span class="font-weight-medium">Website: </span> <a :href="teamWebsite">{{teamWebsite}}</a></p>
+          <p><span class="font-weight-medium">Website: </span> <a :href="teamWebsite" target="_blank">{{teamWebsite}}</a></p>
           <p><v-icon  color="blue">email</v-icon><a :href="teamEmail">  {{teamEmail}}</a></p>
           <p><v-icon color='blue'>phone</v-icon><a :href="teamPhone" >{{teamPhone}}</a></p>
           <p><v-icon color='blue'>location_on</v-icon> {{teamAddress}}</p>
           <p><v-icon color='blue'>assistant_photo</v-icon> {{teamVenue}}</p>
           <table class="table">
             <thead>
-              <th class="text-xs-center">Player</th>
-              <th class="text-xs-center">Posiotn</th>
-              <th class="text-xs-center">Number</th>
-              <th class="text-xs-center">Age</th>
+              <th class="text-xs-left">Player</th>
+              <th class="text-xs-left">Posiotn</th>
+              <th class="text-xs-left">Number</th>
+              <th class="text-xs-left">Age</th>
             </thead>
             <tbody>
               <tr v-for="player in players" :key ='player.id'>
-                <td class="text-xs-center font-weight-medium">{{player.name}}</td>
-                <td class="text-xs-center">{{player.position}}</td>
-                <td class="text-xs-center">{{player.shirtNumber}}</td>
-                <td class="text-xs-center">{{moment().diff(player.dateOfBirth, 'years')}}</td>
+                <td class="text-xs-left font-weight-medium">{{player.name}}</td>
+                <td class="text-xs-left">{{player.position}}</td>
+                <td class="text-xs-left">{{player.shirtNumber}}</td>
+                <td class="text-xs-left">{{moment().diff(player.dateOfBirth, 'years')}}</td>
               </tr>
             </tbody>
           </table>
         </v-container>
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
