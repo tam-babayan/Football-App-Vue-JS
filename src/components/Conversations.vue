@@ -1,16 +1,29 @@
 <template>
     <v-container>
+      <v-card>
         <div v-for="(massage, index) in messages" :key="index">
-            <v-card>{{massage.name}} {{ moment(massage.date).format('YYYY-MM-DD, HH:mm') }} {{massage.body}}</v-card>
+            <v-card>
+              <v-card-title class="title blue--text">
+                {{massage.name}}
+                <v-spacer></v-spacer>
+                <span class="body-1 grey--text">{{ moment(massage.date).format('YYYY-MM-DD, HH:mm') }}</span>
+              </v-card-title>
+                <v-card-text>
+                  {{massage.body}}
+                </v-card-text>
+            </v-card>
         </div>
+        </v-card>
         <v-textarea
             v-model="message"
             solo
-            name='input-7-4'
-            label='Solo textarea'
-            value='The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through.'>
+            name='input'
+            label="What's on you mind?"
+            value=''>
         </v-textarea>
-        <v-btn @click="writeNewPost()">Post</v-btn>
+        <v-layout justify-center>
+          <v-btn @click="writeNewPost()">Post</v-btn>
+        </v-layout>
     </v-container>
 </template>
 
@@ -32,6 +45,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user
+        console.log(this.user)
         this.isLoggedIn = true
         this.fetchPosts()
       } else {
@@ -44,7 +58,7 @@ export default {
     writeNewPost () {
       // A post entry
       var postData = {
-        name: this.user.email,
+        name: this.user.displayName,
         body: this.message,
         date: new Date()
       }
@@ -69,7 +83,6 @@ export default {
       database
         .ref('posts')
         .on('value', data => {
-          console.log(data.val())
           this.messages = data.val()
         })
     }
