@@ -10,16 +10,16 @@
         </v-card-title>
         <v-card-text>
         <v-container>
-          <p><v-icon color='blue'>location_on</v-icon> {{teamAreaName}}</p>
-          <p><span class="font-weight-medium">Short name:</span> {{teamShortName}}</p>
-          <p><span class="font-weight-medium">Founded:</span> {{yearFounded}}</p>
-          <p><span class="font-weight-medium">Club Colors:</span> {{teamColors}}</p>
+          <p><v-icon color='blue'>location_on</v-icon>  {{teamAreaName}}</p>
+          <p><span class="font-weight-medium">Short name:</span>  {{teamShortName}}</p>
+          <p><span class="font-weight-medium">Founded:</span>  {{yearFounded}}</p>
+          <p><span class="font-weight-medium">Club Colors:</span>  {{teamColors}}</p>
           <p><span class="font-weight-medium">Coach:</span> {{teamCoach}}</p>
-          <p><span class="font-weight-medium">Website: </span> <a :href="teamWebsite" target="_blank">{{teamWebsite}}</a></p>
+          <p><v-icon  color="blue">public</v-icon><a :href="teamWebsite" target="_blank">  {{teamWebsite}}</a></p>
           <p><v-icon  color="blue">email</v-icon><a :href="teamEmail">  {{teamEmail}}</a></p>
-          <p><v-icon color='blue'>phone</v-icon><a :href="teamPhone" >{{teamPhone}}</a></p>
-          <p><v-icon color='blue'>location_on</v-icon> {{teamAddress}}</p>
-          <p><v-icon color='blue'>assistant_photo</v-icon> {{teamVenue}}</p>
+          <p><v-icon color='blue'>phone</v-icon><a :href="teamPhone">  {{teamPhone}}</a></p>
+          <p><v-icon color='blue'>location_on</v-icon>  {{teamAddress}}</p>
+          <p><v-icon color='blue'>assistant_photo</v-icon>  {{teamVenue}}</p>
           <table class="table">
             <thead>
               <th class="text-xs-left">Player</th>

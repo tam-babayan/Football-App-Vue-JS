@@ -20,6 +20,7 @@
                   </h4>
                   <v-btn v-if="isFavoritesLoaded && isLoggedIn" flat icon color="yellow"
                     @click='changeFavorites(competition.id)'>
+
                     <v-icon v-if="competition.isFavorite" large>star</v-icon>
                     <v-icon large v-else>star_border</v-icon>
                   </v-btn>

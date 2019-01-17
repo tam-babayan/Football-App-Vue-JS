@@ -1,15 +1,19 @@
 <template>
 <v-app id="inspire">
     <v-content>
-      <v-container fluid fill-height>
+      <v-container >
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
-              <v-toolbar dark color="grey darken-3">
-                <v-toolbar-title>SignUp form</v-toolbar-title>
+              <v-toolbar dark color="blue darken-3">
+                <v-layout justify-space-between row>
+                <v-toolbar-title>Sign In</v-toolbar-title>
+                <i @click="userSignIn()">
+                  <v-img src="./static/img/btn_google_signin_light_normal_web.png" :width="200" :height='50'></v-img>
+                </i>
+                </v-layout>
               </v-toolbar>
-              <div class="g-signin2" data-onsuccess="onSignIn">
-              <v-btn @click="signup()" color="red">Google Sign Up</v-btn></div>
+              <!-- <v-btn @click="signup()" color="blue">Google Sign Up</v-btn> -->
               <v-card-text>
                 <v-form @submit.prevent="signup" v-model="valid">
                   <v-text-field v-model="firstname" :rules="nameRules"
@@ -30,7 +34,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Sign Up</v-btn>
+                <v-btn color="primary">Sign In</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -49,6 +53,7 @@ export default {
     valid: false,
     firstname: '',
     lastname: '',
+    isLoggedIn: null,
     nameRules: [
       v => !!v || 'Name is required',
       v => v.length <= 10 || 'Name must be less than 10 characters'
@@ -59,10 +64,25 @@ export default {
       v => /.+@.+/.test(v) || 'E-mail must be valid'
     ]
   }),
+  mounted () {
+    this.getCurrentUser()
+  },
   methods: {
-    signup () {
+    getCurrentUser () {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.name = user.displayName
+          this.isLoggedIn = true
+        } else {
+          this.isLoggedIn = false
+        }
+      })
+    },
+    userSignIn () {
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithRedirect(provider)
+      this.isLoggedIn = true
+      this.$router.push('/')
     }
   }
 }

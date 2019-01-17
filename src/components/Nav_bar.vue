@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app class="grey lighten-4" temporary>
+    <v-navigation-drawer :width="200" v-model="drawer" app class="grey lighten-4" temporary>
         <v-list>
           <v-list-tile>
             <v-list-tile-content>
@@ -28,13 +28,13 @@
         <v-spacer></v-spacer>
         <div v-if="isLoggedIn === true">
           {{name}}
-          <v-btn @click="signOut()" small>
+          <v-btn flat @click="signOut()" small>
             Sign Out
             <v-icon color="primary">account_circle</v-icon>
           </v-btn>
         </div>
         <div v-else-if="isLoggedIn === false">
-          <v-btn @click="signIn()" small>
+          <v-btn flat @click="signIn()" small>
             Sign In
             <v-icon small color="primary">lock</v-icon>
           </v-btn>

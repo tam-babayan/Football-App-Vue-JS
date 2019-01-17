@@ -1,23 +1,25 @@
 <template>
 <v-container>
-<v-layout align-space-around>
+  <v-layout>
     <v-flex xs12 sm6 offset-sm3>
       <h1 class="font-weight-medium text-xs-center">Favorites</h1>
-      <v-card v-for="competition in favorites" :key="competition.id">
-        <v-flex>
-          <router-link :to='{ path: "/game-list/" + competition.id }'>
-            <v-img :src='competition.logo'  alt='league'/>
-          </router-link>
-        </v-flex>
-        <v-flex>
-          <p class="font-weight-medium text-xs-center">{{competition.country}}</p>
-          <v-spacer></v-spacer>
-          <p class="font-weight-medium text-xs-center">{{competition.name}}</p>
-        </v-flex>
-      </v-card>
+        <v-layout>
+          <v-flex>
+            <v-card v-for="competition in favorites" :key="competition.id">
+              <router-link :to='{ path: "/game-list/" + competition.id }'>
+                <v-img :src='competition.logo'  alt='league'/>
+              </router-link>
+              <v-flex mb-4>
+                <h5 class="font-weight-medium text-xs-center">{{competition.country}}</h5>
+                <v-spacer></v-spacer>
+                <h4 class="font-weight-medium text-xs-center">{{competition.name}}</h4>
+              </v-flex>
+            </v-card>
+          </v-flex>
+        </v-layout>
     </v-flex>
   </v-layout>
-  </v-container>
+</v-container>
 </template>
 
 <script>
