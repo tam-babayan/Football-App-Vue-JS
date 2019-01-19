@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer :width="200" v-model="drawer" app class="grey lighten-4" temporary>
+    <v-navigation-drawer :width="200" v-model="drawer" app class="white" temporary>
         <v-list>
           <v-list-tile>
             <v-list-tile-content>
@@ -22,24 +22,49 @@
           </template>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar app>
+      <v-toolbar app class="white" >
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title class="blue--text"></v-toolbar-title>
         <v-spacer></v-spacer>
-        <div v-if="isLoggedIn === true">
-          {{name}}
-          <v-btn flat @click="signOut()" small>
-            Sign Out
-            <v-icon color="primary">account_circle</v-icon>
-          </v-btn>
+        <div v-if="isLoggedIn === true" class="blue--text font-weight-medium">
+          <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="50" offset-x>
+            <i flat small slot="activator" dark>
+              <v-spacer></v-spacer>
+              <v-avatar size="35"><v-img :src="photo" alt="img"></v-img></v-avatar>
+            </i>
+            <v-card>
+              <v-list>
+                <v-list-tile avatar>
+                  <v-list-tile-avatar>
+                    <v-img :src="photo" alt="img"></v-img>
+                  </v-list-tile-avatar>
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{name}}</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+              <v-divider></v-divider>
+              <v-list>
+                <v-list-tile>
+                  <v-list-tile-action>
+                    <v-switch v-model="notification" color="blue"></v-switch>
+                  </v-list-tile-action>
+                  <v-list-tile-title>Enable notifications</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+              <v-card-actions>
+                <v-btn color="primary" flat @click="signOut()">Sign Out</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-menu>
         </div>
         <div v-else-if="isLoggedIn === false">
-          <v-btn flat @click="signIn()" small>
-            Sign In
-            <v-icon small color="primary">lock</v-icon>
+          <v-btn flat @click="signIn()" small >
+            <span class="primary--text body-2">Sign In</span>
+            <v-icon  color="primary">lock</v-icon>
           </v-btn>
         </div>
-        <div v-else>
+        <div class="blue--text font-weight-medium" v-else>
           Loading...
         </div>
       </v-toolbar>
@@ -54,7 +79,11 @@ export default {
     return {
       drawer: false,
       name: null,
-      isLoggedIn: null
+      photo: null,
+      isLoggedIn: null,
+      // fav: true,
+      menu: false,
+      notification: false
     }
   },
   mounted () {
@@ -97,8 +126,10 @@ export default {
   methods: {
     getCurrentUser () {
       firebase.auth().onAuthStateChanged((user) => {
+        console.log(user)
         if (user) {
           this.name = user.displayName
+          this.photo = user.photoURL
           this.isLoggedIn = true
         } else {
           this.isLoggedIn = false
@@ -121,4 +152,7 @@ export default {
 </script>
 
 <style scope>
+v-icon {
+  padding-top: 10px
+}
 </style>

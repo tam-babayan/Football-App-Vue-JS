@@ -22,7 +22,7 @@
             value=''>
         </v-textarea>
         <v-layout justify-center>
-          <v-btn @click="writeNewPost()">Post</v-btn>
+          <v-btn @click="writeNewPost()" class="primary">Post</v-btn>
         </v-layout>
     </v-container>
 </template>

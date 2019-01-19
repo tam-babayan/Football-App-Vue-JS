@@ -10,35 +10,20 @@
           </router-link>
         </v-card-title>
         <v-layout justify-center row>
-          <v-flex px-4>
+          <v-flex xs4 sm6 md4 lg4 px-1>
             <router-link :to="{ path: '/team-details/' + homeTeamId}">
-              <v-img :height="120" :width="120" :src="getTeamLogo(this.homeTeamLogo)"/>
-              <v-spacer></v-spacer>
-              {{homeTeamName}}
+              <v-img :height="100" :width="100" :src="getTeamLogo(this.homeTeamLogo)"/>
+              <p class="text-xs-center">{{homeTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
-              <v-btn icon>
-                <v-icon color='pink'>favorite</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color='blue'>share</v-icon>
-              </v-btn>
             </v-card-actions>
           </v-flex>
-          <v-spacer></v-spacer>
-          <v-flex px-4>
+          <v-flex xs4 sm6 md4 lg4 px-1>
             <router-link :to="{ path: '/team-details/' + awayTeamId}">
-              <v-img :height="120" :width="120" :src="getTeamLogo(this.awayTeamLogo)" />
-              <v-spacer></v-spacer>
-              {{awayTeamName}}
+              <v-img :height="100" :width="100" :src="getTeamLogo(this.awayTeamLogo)" />
+              <p class="text-xs-center">{{awayTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
-              <v-btn icon>
-                <v-icon color='pink'>favorite</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color='blue'>share</v-icon>
-              </v-btn>
             </v-card-actions>
           </v-flex>
         </v-layout>

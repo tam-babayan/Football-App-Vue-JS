@@ -1,23 +1,20 @@
 <template>
-<v-container>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <h1 class="font-weight-medium text-xs-center">Favorites</h1>
-        <v-layout>
-          <v-flex>
-            <v-card v-for="competition in favorites" :key="competition.id">
-              <router-link :to='{ path: "/game-list/" + competition.id }'>
-                <v-img :src='competition.logo'  alt='league'/>
-              </router-link>
-              <v-flex mb-4>
-                <h5 class="font-weight-medium text-xs-center">{{competition.country}}</h5>
-                <v-spacer></v-spacer>
-                <h4 class="font-weight-medium text-xs-center">{{competition.name}}</h4>
-              </v-flex>
-            </v-card>
-          </v-flex>
-        </v-layout>
-    </v-flex>
+<v-container class="favorites">
+  <h1 class="font-weight-medium text-xs-center">Favorites</h1>
+  <v-layout row wrap justify-space-around>
+    <v-card v-for="competition in favorites" :key="competition.id" width='300'>
+      <v-icon class="delete material-icons" icon @click="deleteFavorite(competition.id)">delete</v-icon>
+      <v-layout align-center justify-center>
+          <router-link :to='{ path: "/game-list/" + competition.id }'>
+            <v-img :src='competition.logo' width="150" alt='league'/>
+          </router-link>
+      </v-layout>
+      <v-layout align-center justify-center>
+          <v-card-text>
+            <h4 class="font-weight-medium text-xs-center">{{competition.name}}</h4>
+          </v-card-text>
+      </v-layout>
+    </v-card>
   </v-layout>
 </v-container>
 </template>
@@ -57,7 +54,7 @@ export default {
       if (this.isLoggedIn) {
         database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
           .then(snapshot => {
-            var favorites = snapshot.val()
+            var favorites = snapshot.val() || []
             this.competitions = this.competitions.map(one => {
               if (favorites.includes(one.id)) {
                 one.isFavorite = true
@@ -66,11 +63,25 @@ export default {
             })
           })
       }
+    },
+    deleteFavorite (id) {
+      this.competitions = this.competitions.map(one => {
+        if (one.id === id) {
+          one.isFavorite = false
+          var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
+          database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
+        }
+        return one
+      })
     }
   }
 }
 </script>
 
-<style>
-
+<style scope>
+.favorites .delete {
+  position: absolute;
+  right: 4px;
+  color: #aaa;
+}
 </style>

@@ -12,22 +12,22 @@
       class="elevation-1">
         <v-progress-linear slot="progress" color="black" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="props">
-          <td class='text-xs-left'>
-            <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
-              <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)"/>
-              {{ props.item.homeTeam.name }}
-            </router-link>
-          </td>
-          <td class='text-xs-left'>
-              <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
-                <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)"/>
-                {{ props.item.awayTeam.name }}
+            <td class='text-xs-left'>
+              <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
+                <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)"/>
+                {{ props.item.homeTeam.name }}
               </router-link>
-          </td>
-          <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
-          <td class='text-xs-left'>
-          <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
-          </td>
+            </td>
+            <td class='text-xs-left'>
+                <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
+                  <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)"/>
+                  {{ props.item.awayTeam.name }}
+                </router-link>
+            </td>
+            <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
+            <td class='text-xs-left'>
+            <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
+            </td>
         </template>
     </v-data-table>
   </v-card>
@@ -115,4 +115,10 @@ export default {
 </script>
 
 <style scope>
+table,
+.v-table,
+ tbody,
+td:first-child {
+ padding: 0 15px;
+}
 </style>

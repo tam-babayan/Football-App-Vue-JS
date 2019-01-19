@@ -4,7 +4,7 @@
       <hr>
       <section class='text-center mb-4'>
         <div class='row wow fadeIn'>
-          <div class='col-lg-3 col-md-6 mb-4' v-for='competition in competitions' :key='competition.id'>
+          <div class='col-lg-3 col-md-4 mb-4' v-for='competition in competitions' :key='competition.id'>
             <div class='card'>
               <div class='view overlay zoom'>
                 <router-link :to='{ path: "/game-list/" + competition.id }'>
@@ -18,9 +18,8 @@
                       <a href='' class='dark-grey-text'>{{competition.name}}</a>
                     </strong>
                   </h4>
-                  <v-btn v-if="isFavoritesLoaded && isLoggedIn" flat icon color="yellow"
+                  <v-btn v-if="isFavoritesLoaded && isLoggedIn" flat icon color="pink"
                     @click='changeFavorites(competition.id)'>
-
                     <v-icon v-if="competition.isFavorite" large>star</v-icon>
                     <v-icon large v-else>star_border</v-icon>
                   </v-btn>
@@ -75,7 +74,7 @@ export default {
       if (this.isLoggedIn) {
         database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
           .then(snapshot => {
-            var favorites = snapshot.val()
+            var favorites = snapshot.val() || []
             this.competitions = this.competitions.map(one => {
               if (favorites.includes(one.id)) {
                 one.isFavorite = true
