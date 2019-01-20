@@ -1,7 +1,7 @@
 <template>
     <v-container>
       <v-card>
-        <div v-for="(massage, index) in messages" :key="index">
+        <div v-for="(massage, key) in messages" :key="key">
             <v-card>
               <v-card-title class="title blue--text">
                 {{massage.name}}
@@ -11,6 +11,14 @@
                 <v-card-text>
                   {{massage.body}}
                 </v-card-text>
+                <v-card-actions>
+                  <v-flex px-3 pb-2>
+                    <v-icon class="material-icons" color='primary' @click="likeDislike(key, 'up')"> thumb_up</v-icon>
+                      {{massage.likes}}
+                    <v-icon class="material-icons" color='red' @click="likeDislike(key, 'down')"> thumb_down</v-icon>
+                      {{massage.dislikes}}
+                  </v-flex>
+                </v-card-actions>
             </v-card>
         </div>
         </v-card>
@@ -60,7 +68,9 @@ export default {
       var postData = {
         name: this.user.displayName,
         body: this.message,
-        date: new Date()
+        date: new Date(),
+        likes: 0,
+        dislikes: 0
       }
       // Get a key for a new Post
       var newPostKey = database
@@ -85,11 +95,22 @@ export default {
         .on('value', data => {
           this.messages = data.val()
         })
+    },
+    likeDislike (id, direction) {
+      if (direction === 'up') {
+        this.messages[id].likes++
+      } else {
+        this.messages[id].dislikes++
+      }
+      var updates = {}
+      updates[id] = this.messages[id]
+      database
+        .ref('posts')
+        .update(updates)
     }
   }
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>
