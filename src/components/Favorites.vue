@@ -84,4 +84,7 @@ export default {
   right: 4px;
   color: #aaa;
 }
+.v-card {
+  margin: 10px
+}
 </style>
