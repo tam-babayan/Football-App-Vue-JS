@@ -12,7 +12,8 @@
         <v-layout justify-center row>
           <v-flex xs4 sm6 md4 lg4 px-1>
             <router-link :to="{ path: '/team-details/' + homeTeamId}">
-              <v-img :height="100" :width="100" :src="getTeamLogo(this.homeTeamLogo)"/>
+              <v-img :height="100" :width="100" :src="getTeamLogo(this.homeTeamLogo)"
+                @error="getDefaultLogoHomeTeam()"/>
               <p class="text-xs-center">{{homeTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
@@ -20,7 +21,8 @@
           </v-flex>
           <v-flex xs4 sm6 md4 lg4 px-1>
             <router-link :to="{ path: '/team-details/' + awayTeamId}">
-              <v-img :height="100" :width="100" :src="getTeamLogo(this.awayTeamLogo)" />
+              <v-img :height="100" :width="100" :src="getTeamLogo(this.awayTeamLogo)"
+                @error="getDefaultLogoAwayTeam()"/>
               <p class="text-xs-center">{{awayTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
@@ -137,6 +139,12 @@ export default {
     },
     getTeamLogo (teamLogo) {
       return teamLogo || './static/img/ball1.png'
+    },
+    getDefaultLogoHomeTeam () {
+      this.homeTeamLogo = './static/img/ball1.png'
+    },
+    getDefaultLogoAwayTeam () {
+      this.awayTeamLogo = './static/img/ball1.png'
     }
   },
   computed: {

@@ -3,7 +3,7 @@
     <v-flex xs12 sm6 offset-sm3 pt-4>
       <v-card>
         <v-card-title class="justify-center">
-          <img :src = "logo" :width="200" />
+          <img :src = "logo" :width="200" @error="defaultLogo()"/>
             <h4 class="headline mb-0 font-weight-bold">
                 {{teamName}}
             </h4>
@@ -94,6 +94,9 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    defaultLogo () {
+      this.teamLogo = './static/img/ball1.png'
     }
   },
   computed: {
