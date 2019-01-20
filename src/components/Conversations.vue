@@ -13,9 +13,9 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-flex px-3 pb-2>
-                    <v-icon class="material-icons" color='primary' @click="likeDislike(key, 'up')"> thumb_up</v-icon>
+                    <v-icon class="material-icons" color='primary' @click="vote(key, 'up')"> thumb_up</v-icon>
                       {{massage.likes}}
-                    <v-icon class="material-icons" color='red' @click="likeDislike(key, 'down')"> thumb_down</v-icon>
+                    <v-icon class="material-icons" color='red' @click="vote(key, 'down')"> thumb_down</v-icon>
                       {{massage.dislikes}}
                   </v-flex>
                 </v-card-actions>
@@ -53,7 +53,6 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user
-        console.log(this.user)
         this.isLoggedIn = true
         this.fetchPosts()
       } else {
@@ -96,7 +95,7 @@ export default {
           this.messages = data.val()
         })
     },
-    likeDislike (id, direction) {
+    vote (id, direction) {
       if (direction === 'up') {
         this.messages[id].likes++
       } else {

@@ -68,11 +68,11 @@ export default {
       this.competitions = this.competitions.map(one => {
         if (one.id === id) {
           one.isFavorite = false
-          var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
-          database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
         }
         return one
       })
+      var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
+      database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
     }
   }
 }

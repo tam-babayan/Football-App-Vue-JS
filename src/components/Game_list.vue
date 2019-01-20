@@ -58,6 +58,16 @@ export default {
       logos: {}
     }
   },
+  computed: {
+    getLeagueName () {
+      const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
+      return tempArr[0].name
+    },
+    getLeagueLogo () {
+      const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
+      return tempArr[0].logo
+    }
+  },
   mounted () {
     this.getData()
     this.getLogo()
@@ -106,16 +116,6 @@ export default {
           one.crestUrl = './static/img/ball1.png'
         }
       })
-    }
-  },
-  computed: {
-    getLeagueName () {
-      const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
-      return tempArr[0].name
-    },
-    getLeagueLogo () {
-      const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
-      return tempArr[0].logo
     }
   }
 }

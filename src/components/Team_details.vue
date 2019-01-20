@@ -63,6 +63,18 @@ export default {
       squad: []
     }
   },
+  computed: {
+    logo () {
+      return this.teamLogo || './static/img/ball1.png'
+    },
+    teamCoach () {
+      let arr = this.squad.filter(one => one.role === 'COACH')
+      return arr[0] ? arr[0].name : null
+    },
+    players () {
+      return this.squad.filter(one => one.role === 'PLAYER')
+    }
+  },
   mounted () {
     this.getData()
   },
@@ -97,18 +109,6 @@ export default {
     },
     defaultLogo () {
       this.teamLogo = './static/img/ball1.png'
-    }
-  },
-  computed: {
-    logo () {
-      return this.teamLogo || './static/img/ball1.png'
-    },
-    teamCoach () {
-      let arr = this.squad.filter(one => one.role === 'COACH')
-      return arr[0] ? arr[0].name : null
-    },
-    players () {
-      return this.squad.filter(one => one.role === 'PLAYER')
     }
   }
 }

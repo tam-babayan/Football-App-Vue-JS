@@ -86,9 +86,6 @@ export default {
       notification: false
     }
   },
-  mounted () {
-    this.getCurrentUser()
-  },
   computed: {
     items () {
       var items = [{
@@ -123,6 +120,9 @@ export default {
       return items
     }
   },
+  mounted () {
+    this.getCurrentUser()
+  },
   methods: {
     getCurrentUser () {
       firebase.auth().onAuthStateChanged((user) => {
@@ -142,7 +142,6 @@ export default {
     },
     signOut () {
       firebase.auth().signOut().then(() => {
-        this.isLoggedIn = false
       }).catch(function (error) {
         console.log(error)
       })

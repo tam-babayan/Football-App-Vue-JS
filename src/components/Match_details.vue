@@ -108,7 +108,6 @@ export default {
             this.homeTeam = response.data
             this.homeTeamLogo = this.homeTeam.crestUrl
             this.homeTeamAddress = this.homeTeam.address
-            console.log(this.homeTeam)
 
             this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address +
               '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
@@ -118,7 +117,6 @@ export default {
             this.awayTeamLogo = this.awayTeam.crestUrl
             this.awayTeamName = this.match.awayTeam.name
             this.awayTeamId = this.match.awayTeam.id
-            console.log(this.awayTeam)
           })
         })
         .catch(function (error) {
@@ -145,12 +143,6 @@ export default {
     },
     getDefaultLogoAwayTeam () {
       this.awayTeamLogo = './static/img/ball1.png'
-    }
-  },
-  computed: {
-    getLeagueLogo () {
-      const tempArr = this.competitions.filter(one => one.id === this.competitionId)
-      return tempArr[0].logo
     }
   }
 }
