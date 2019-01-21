@@ -32,6 +32,7 @@ export default {
       isLoggedIn: null
     }
   },
+  // Get the currently signed-in user by setting an observer on the Auth object
   created () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -44,12 +45,14 @@ export default {
       }
     })
   },
+  // filter the object with "true" value
   computed: {
     favorites () {
       return this.competitions.filter(one => one.isFavorite === true)
     }
   },
   methods: {
+    // fetching id list and mapping competitions to set the matching leagues isFavorite key into true
     fetchFavorites () {
       if (this.isLoggedIn) {
         database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
@@ -64,6 +67,7 @@ export default {
           })
       }
     },
+    // mapping competitions to set the matching league isFavorite key into false
     deleteFavorite (id) {
       this.competitions = this.competitions.map(one => {
         if (one.id === id) {
@@ -71,6 +75,7 @@ export default {
         }
         return one
       })
+      // sending the changed favorite leagues list to database
       var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
       database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
     }

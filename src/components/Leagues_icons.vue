@@ -46,6 +46,7 @@ export default {
       isFavoritesLoaded: false
     }
   },
+  // Get the currently signed-in user by setting an observer on the Auth object
   created () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -58,6 +59,7 @@ export default {
     })
   },
   methods: {
+    // maps the competitions array and sets the "isFavorite" key of selected league into opposite
     changeFavorites (id) {
       if (this.isLoggedIn) {
         this.competitions = this.competitions.map(one => {
@@ -66,10 +68,12 @@ export default {
           }
           return one
         })
+        // sends the updated favorites list to database
         var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
         database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
       }
     },
+    // fetches the favorite legaues id list from database and mapps over our competitions array to set the isFavorite key of matching ones into true
     fetchFavorites () {
       if (this.isLoggedIn) {
         database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
@@ -82,6 +86,7 @@ export default {
               return one
             })
           })
+          // we are using this variable to show fetched info only when the fetching process is completed
           .finally(() => {
             this.isFavoritesLoaded = true
           })

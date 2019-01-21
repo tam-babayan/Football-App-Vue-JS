@@ -64,21 +64,26 @@ export default {
     }
   },
   computed: {
+    // sets a default image when there is no info in fetched information
     logo () {
       return this.teamLogo || './static/img/ball1.png'
     },
+    // filters the coach to show it in a separate field and not in the table
     teamCoach () {
       let arr = this.squad.filter(one => one.role === 'COACH')
       return arr[0] ? arr[0].name : null
     },
+    // fiters the players to show them in a table
     players () {
       return this.squad.filter(one => one.role === 'PLAYER')
     }
   },
   mounted () {
+    // calls the fetching function
     this.getData()
   },
   methods: {
+    // fetches team data based on the id passed by the router
     getData () {
       axios
         .create({
@@ -107,6 +112,7 @@ export default {
           console.log(error)
         })
     },
+    // handles the error case, when there is logo info but it is unavailable
     defaultLogo () {
       this.teamLogo = './static/img/ball1.png'
     }

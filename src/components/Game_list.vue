@@ -59,20 +59,24 @@ export default {
     }
   },
   computed: {
+    // filters the league, which id is passed by the router
     getLeagueName () {
       const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
       return tempArr[0].name
     },
+    // filters the league, which id is passed by the router
     getLeagueLogo () {
       const tempArr = this.competitions.filter(one => one.id === this.$route.params.id)
       return tempArr[0].logo
     }
   },
+  // calls fetching functions
   mounted () {
     this.getData()
     this.getLogo()
   },
   methods: {
+    // fetches match info based on legaue id
     getData () {
       axios
         .create({
@@ -91,6 +95,7 @@ export default {
           console.log(error)
         })
     },
+    // fetches logos with another API call
     getLogo () {
       axios
         .create({
@@ -106,10 +111,13 @@ export default {
           console.log(error)
         })
     },
+    // filters fetched info to take matching logos
+    // when there is no info sets a default image
     getTeamLogo (id) {
       const tempArr = this.logos.teams.filter(one => one.id === id)
       return tempArr[0].crestUrl || './static/img/ball1.png'
     },
+    // in case of error (image info exists but is invalid and there is no image) shows the default image
     getDefaultLogo (id) {
       this.logos.teams.map((one) => {
         if (one.id === id) {

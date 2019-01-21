@@ -87,6 +87,7 @@ export default {
     }
   },
   computed: {
+    // the content of navbar is based on this array
     items () {
       var items = [{
         href: 'Home',
@@ -94,7 +95,7 @@ export default {
         title: 'Home',
         icon: 'home'
       }]
-
+      // checks if the user is logged in and changes the content of navbar
       if (this.isLoggedIn) {
         items.push({
           href: 'Favorites',
@@ -121,9 +122,11 @@ export default {
     }
   },
   mounted () {
+    // Calls the function that gets the currently signed-in user by setting an observer on the Auth object
     this.getCurrentUser()
   },
   methods: {
+    // Get the currently signed-in user by setting an observer on the Auth object
     getCurrentUser () {
       firebase.auth().onAuthStateChanged((user) => {
         console.log(user)

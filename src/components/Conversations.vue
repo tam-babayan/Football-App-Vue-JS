@@ -49,6 +49,7 @@ export default {
       messages: []
     }
   },
+  // Get the currently signed-in user by setting an observer on the Auth object
   created () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -95,6 +96,7 @@ export default {
           this.messages = data.val()
         })
     },
+    // increment likes and dislikes locally and update firebase post
     vote (id, direction) {
       if (direction === 'up') {
         this.messages[id].likes++

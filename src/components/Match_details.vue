@@ -79,10 +79,12 @@ export default {
       mapUrl: ''
     }
   },
+  // calling fetching functions
   mounted () {
     this.getData()
   },
   methods: {
+    // fetches match details with the match id setted by the router
     getData () {
       axios
         .create({
@@ -104,6 +106,7 @@ export default {
           this.homeTeamId = this.match.homeTeam.id
           this.homeTeamName = this.match.homeTeam.name
           this.matchVenue = this.match.venue
+          // fetches the logos of homeTeam with another API call, this executes after we get the match id
           this.getLogosfromAPI(this.match.homeTeam.id).then(response => {
             this.homeTeam = response.data
             this.homeTeamLogo = this.homeTeam.crestUrl
@@ -112,6 +115,7 @@ export default {
             this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address +
               '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
           })
+          // fetches the logos of awayTeam with another API call, this executes after we get the match id
           this.getLogosfromAPI(this.match.awayTeam.id).then(response => {
             this.awayTeam = response.data
             this.awayTeamLogo = this.awayTeam.crestUrl
@@ -123,6 +127,7 @@ export default {
           console.log(error)
         })
     },
+    // fetches team info based on team id, this is called when the match details fetch is completed
     getLogosfromAPI (id) {
       return axios
         .create({
@@ -135,12 +140,15 @@ export default {
           console.log(error)
         })
     },
+    // returns default image when theere is no logo info in the fetched info
     getTeamLogo (teamLogo) {
       return teamLogo || './static/img/ball1.png'
     },
+    // handles error case (when theere is logo info, but is not valid)
     getDefaultLogoHomeTeam () {
       this.homeTeamLogo = './static/img/ball1.png'
     },
+    // handles error case (when theere is logo info, but is not valid)
     getDefaultLogoAwayTeam () {
       this.awayTeamLogo = './static/img/ball1.png'
     }
