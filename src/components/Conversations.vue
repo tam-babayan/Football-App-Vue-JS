@@ -114,4 +114,8 @@ export default {
 </script>
 
 <style scoped>
+.v-text-field__slot {
+  margin-right: 5px;
+  margin-left: 5px
+}
 </style>

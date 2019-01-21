@@ -73,7 +73,8 @@ export default {
         database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
       }
     },
-    // fetches the favorite legaues id list from database and mapps over our competitions array to set the isFavorite key of matching ones into true
+    // fetches the favorite legaues id list from database and mapps
+    // over our competitions array to set the isFavorite key of matching ones into true
     fetchFavorites () {
       if (this.isLoggedIn) {
         database.ref('users/ ' + this.user.uid + ' /favorites').once('value')

@@ -12,22 +12,22 @@
       class="elevation-1">
         <v-progress-linear slot="progress" color="black" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="props">
-            <td class='text-xs-left'>
-              <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
-                <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)" @error="getDefaultLogo(props.item.homeTeam.id)"/>
-                {{ props.item.homeTeam.name }}
+          <td class='text-xs-left'>
+            <router-link  :to="{ path: '/team-details/' + props.item.homeTeam.id }">
+              <v-img :width="30" :src="getTeamLogo(props.item.homeTeam.id)" @error="getDefaultLogo(props.item.homeTeam.id)"/>
+              {{ props.item.homeTeam.name }}
+            </router-link>
+          </td>
+          <td class='text-xs-left'>
+              <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
+                <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)" @error="getDefaultLogo(props.item.awayTeam.id)"/>
+                {{ props.item.awayTeam.name }}
               </router-link>
-            </td>
-            <td class='text-xs-left'>
-                <router-link  :to="{ path: '/team-details/' + props.item.awayTeam.id}">
-                  <v-img :width="30" :src="getTeamLogo(props.item.awayTeam.id)" @error="getDefaultLogo(props.item.awayTeam.id)"/>
-                  {{ props.item.awayTeam.name }}
-                </router-link>
-            </td>
-            <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
-            <td class='text-xs-left'>
-            <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
-            </td>
+          </td>
+          <td class='text-xs-left'>{{ moment(props.item.utcDate).format('YYYY-MM-DD, HH:mm') }}</td>
+          <td class='text-xs-left'>
+          <router-link :to="{ path: '/match-details/' + props.item.id}">Match Details</router-link>
+          </td>
         </template>
     </v-data-table>
   </v-card>
@@ -117,7 +117,8 @@ export default {
       const tempArr = this.logos.teams.filter(one => one.id === id)
       return tempArr[0].crestUrl || './static/img/ball1.png'
     },
-    // in case of error (image info exists but is invalid and there is no image) shows the default image
+    // in case of error (image info exists but is invalid
+    // and there is no image) shows the default image
     getDefaultLogo (id) {
       this.logos.teams.map((one) => {
         if (one.id === id) {
