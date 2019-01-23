@@ -22,9 +22,9 @@
           </template>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar app class="white" >
+      <v-toolbar app class="white">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title class="blue--text"></v-toolbar-title>
+        <v-toolbar-title class="primary--text">TFootball</v-toolbar-title>
         <v-spacer></v-spacer>
         <div v-if="isLoggedIn === true" class="blue--text font-weight-medium">
           <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="50" offset-x>

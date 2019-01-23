@@ -85,7 +85,7 @@ export default {
           }
         })
         .get(
-          'https://api.football-data.org/v2/competitions/' + this.$route.params.id + '/matches?status=SCHEDULED'
+          `https://api.football-data.org/v2/competitions/${this.$route.params.id}/matches?status=SCHEDULED`
         )
         .then(response => {
           this.matches = response.data.matches
@@ -103,7 +103,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('https://api.football-data.org/v2/competitions/' + this.$route.params.id + '/teams')
+        .get(`https://api.football-data.org/v2/competitions/${this.$route.params.id}/teams`)
         .then(response => {
           this.logos = response.data
         })

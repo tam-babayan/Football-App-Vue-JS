@@ -70,14 +70,14 @@ export default {
         })
         // sends the updated favorites list to database
         var favorites = this.competitions.filter(one => one.isFavorite).map(one => one.id)
-        database.ref('users/ ' + this.user.uid + ' /favorites').set(favorites)
+        database.ref(`users/${this.user.uid}/favorites`).set(favorites)
       }
     },
     // fetches the favorite legaues id list from database and mapps
     // over our competitions array to set the isFavorite key of matching ones into true
     fetchFavorites () {
       if (this.isLoggedIn) {
-        database.ref('users/ ' + this.user.uid + ' /favorites').once('value')
+        database.ref(`users/${this.user.uid}/favorites`).once('value')
           .then(snapshot => {
             var favorites = snapshot.val() || []
             this.competitions = this.competitions.map(one => {

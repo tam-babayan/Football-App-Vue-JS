@@ -1,6 +1,7 @@
 <template>
   <v-layout>
     <v-flex xs12 sm6 offset-sm3 pt-4>
+      <breadCrumbsTeam class="justify-left" ></breadCrumbsTeam>
       <v-card>
         <v-card-title class="justify-center">
           <img :src = "logo" :width="200" @error="defaultLogo()"/>
@@ -91,7 +92,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('https://api.football-data.org/v2/teams/' + this.$route.params.id)
+        .get(`https://api.football-data.org/v2/teams/${this.$route.params.id}`)
         .then(response => {
           this.team = response.data
           this.teamLogo = this.team.crestUrl

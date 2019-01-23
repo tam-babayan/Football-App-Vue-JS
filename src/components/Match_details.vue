@@ -14,7 +14,7 @@
             <router-link :to="{ path: '/team-details/' + homeTeamId}">
               <v-img :height="100" :width="100" :src="getTeamLogo(this.homeTeamLogo)"
                 @error="getDefaultLogoHomeTeam()"/>
-              <p class="text-xs-center">{{homeTeamName}}</p>
+              <p class="text-xs-left">{{homeTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
             </v-card-actions>
@@ -23,7 +23,7 @@
             <router-link :to="{ path: '/team-details/' + awayTeamId}">
               <v-img :height="100" :width="100" :src="getTeamLogo(this.awayTeamLogo)"
                 @error="getDefaultLogoAwayTeam()"/>
-              <p class="text-xs-center">{{awayTeamName}}</p>
+              <p class="text-xs-left">{{awayTeamName}}</p>
             </router-link>
             <v-card-actions class="justify-center">
             </v-card-actions>
@@ -93,9 +93,7 @@ export default {
           }
         })
         .get(
-          'https://api.football-data.org/v2/matches/' +
-          this.$route.params.id +
-          '?status=SCHEDULED'
+          `https://api.football-data.org/v2/matches/${this.$route.params.id}?status=SCHEDULED`
         )
         .then(response => {
           this.match = response.data.match
@@ -112,8 +110,7 @@ export default {
             this.homeTeamLogo = this.homeTeam.crestUrl
             this.homeTeamAddress = this.homeTeam.address
 
-            this.mapUrl = 'https://www.google.com/maps/embed/v1/place?q=' + this.homeTeam.address +
-              '&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA'
+            this.mapUrl = `https://www.google.com/maps/embed/v1/place?q=${this.homeTeam.address}&key=AIzaSyDY1h7DRZVDA-kiv0hU7EgEAd4Jz-QHxDA`
           })
           // fetches the logos of awayTeam with another API call, this executes after we get the match id
           this.getLogosfromAPI(this.match.awayTeam.id).then(response => {
@@ -135,7 +132,7 @@ export default {
             'X-Auth-Token': 'de35073be09a47748cd8ce50b6d68fd3'
           }
         })
-        .get('https://api.football-data.org/v2/teams/' + id)
+        .get(`https://api.football-data.org/v2/teams/${id}`)
         .catch(function (error) {
           console.log(error)
         })
