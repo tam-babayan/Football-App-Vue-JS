@@ -45,7 +45,7 @@ export default {
       }
     })
   },
-  // filter the object with "true" value
+  // filters the object with "true" value
   computed: {
     favorites () {
       return this.competitions.filter(one => one.isFavorite === true)
