@@ -2,7 +2,7 @@
     <v-container>
       <v-card>
         <div v-for="(massage, key) in messages" :key="key">
-            <v-card>
+            <v-card :class="[ massage.userId == user.uid ? 'background-yellow' : 'background-light' ]">
               <v-card-title class="title blue--text">
                 {{massage.name}}
                 <v-spacer></v-spacer>
@@ -54,6 +54,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user
+        console.log(this.user)
         this.isLoggedIn = true
         this.fetchPosts()
       } else {
@@ -69,6 +70,7 @@ export default {
         name: this.user.displayName,
         body: this.message,
         date: new Date(),
+        userId: this.user.uid,
         likes: 0,
         dislikes: 0
       }
@@ -118,4 +120,10 @@ export default {
   margin-right: 5px;
   margin-left: 5px
 }
+.background-yellow {
+    background-color: #FFFDD0;
+  }
+  .background-light {
+    background-color: #fff;
+  }
 </style>
